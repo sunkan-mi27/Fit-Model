@@ -1,12 +1,17 @@
 import Navbar from "../components/Navbar";
 import Features from "../components/Features";
+import Background from "../components/Background";
+import MouseGlow from "../components/MouseGlow";
+import useReveal from "../hooks/useReveal";
 
 export default function Home() {
+  useReveal();
   return (
     <>
+      <Background />
+      <MouseGlow />
       <Navbar />
-
-      <section className="hero">
+      <section className="hero reveal">
         <div className="hero-content">
           <span className="tag">Performance • Portfolio • Progress</span>
 

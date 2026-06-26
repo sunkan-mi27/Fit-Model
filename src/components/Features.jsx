@@ -26,7 +26,7 @@ export default function Features() {
   ];
 
   return (
-    <section className="features" id="features">
+    <section className="features reveal" id="features">
       <span className="section-tag">FEATURES</span>
 
       <h2>

@@ -8,6 +8,7 @@ body {
   font-family: Inter, sans-serif;
   background: #0a0a0a;
   color: white;
+  overflow-x: hidden;
 }
 
 a {
@@ -34,10 +35,12 @@ a {
 .hero {
   min-height: 100vh;
   display: flex;
+  position: relative;
   justify-content: space-between;
   align-items: center;
   padding: 0 8%;
   gap: 80px;
+  z-index: 2;
 }
 
 .hero-content {
@@ -145,7 +148,7 @@ a {
 }
 
 .stat-box {
-  background: grey;
+  background: black;
   padding: 18px;
   border-radius: 15px;
 }
@@ -389,8 +392,9 @@ a {
 
 .features {
   padding: 140px 8%;
-
+  position: relative;
   text-align: center;
+  z-index: 2;
 }
 
 .section-tag {
@@ -502,4 +506,152 @@ a {
   color: #94a3b8;
 
   line-height: 1.7;
+}
+
+/* ---------- PREMIUM BACKGROUND ---------- */
+
+.background {
+  position: fixed;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  z-index: -3;
+
+  background: #050505;
+}
+
+.blob {
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter: blur(120px);
+
+  opacity: 0.22;
+
+  animation: float 18s infinite ease-in-out;
+}
+
+.blob1 {
+  width: 420px;
+
+  height: 420px;
+
+  background: #00e5a8;
+
+  top: -120px;
+
+  left: -120px;
+}
+
+.blob2 {
+  width: 380px;
+
+  height: 380px;
+
+  background: #00ff95;
+
+  bottom: -120px;
+
+  right: -100px;
+
+  animation-delay: 4s;
+}
+
+.blob3 {
+  width: 250px;
+
+  height: 250px;
+
+  background: #00e5a8;
+
+  top: 45%;
+
+  left: 45%;
+
+  animation-delay: 8s;
+}
+
+.grid-lines {
+  position: absolute;
+
+  inset: 0;
+
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+
+  background-size: 60px 60px;
+
+  mask-image: radial-gradient(circle, #fff 20%, transparent 85%);
+}
+
+/* ---------- MOUSE GLOW ---------- */
+
+.mouse-glow {
+  position: fixed;
+
+  width: 260px;
+
+  height: 260px;
+
+  background: #00e5a8;
+
+  border-radius: 50%;
+
+  filter: blur(140px);
+
+  opacity: 0.12;
+
+  pointer-events: none;
+
+  transform: translate(-50%, -50%);
+
+  z-index: -1;
+
+  transition:
+    left 0.12s linear,
+    top 0.12s linear;
+}
+
+/* ---------- SCROLL ANIMATION ---------- */
+
+.reveal {
+  opacity: 0;
+
+  transform: translateY(70px);
+
+  transition: 1s ease;
+}
+
+.show {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* ---------- FLOAT ---------- */
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(80px, -40px);
+  }
+
+  50% {
+    transform: translate(-60px, 60px);
+  }
+
+  75% {
+    transform: translate(40px, -20px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
 }
