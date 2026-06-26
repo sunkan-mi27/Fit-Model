@@ -1,21 +1,31 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
+  const [scroll, setScroll] = useState();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScroll(window.scrollY > 40);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
-    <nav className="navbar">
+    <nav className={scroll ? "navbar navbar-scroll" : "navbar"}>
       <div className="logo">
-        <span>FitModel</span>
-        <small>OS</small>
+        FitModel<span>OS</span>
       </div>
 
       <div className="nav-links">
         <a href="#features">Features</a>
         <a href="#models">Models</a>
         <a href="#pricing">Pricing</a>
-        <Link to="/dashboard">Dashboard</Link>
+        <a href="#dashboard">Dashboard</a>
       </div>
 
-      <button className="nav-btn">Get Started</button>
+      <button className="btn-primary magnetic">Get Started</button>
     </nav>
   );
 }

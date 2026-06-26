@@ -22,7 +22,6 @@ function Counter({ end, suffix = "" }) {
     }, 16);
 
     return () => clearInterval(timer);
-
   }, [end]);
 
   return (
@@ -36,7 +35,6 @@ function Counter({ end, suffix = "" }) {
 export default function TrustedStats() {
   return (
     <section className="trusted-stats">
-
       <div className="stat-item">
         <Counter end={15000} suffix="+" />
         <p>Active Models</p>
@@ -56,7 +54,6 @@ export default function TrustedStats() {
         <Counter end={32} />
         <p>Countries</p>
       </div>
-
     </section>
   );
 }

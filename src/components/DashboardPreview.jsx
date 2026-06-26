@@ -1,3 +1,5 @@
+import TiltCard from "./TiltCard";
+
 export default function DashboardPreview() {
   return (
     <section className="dashboard-preview">
@@ -12,29 +14,29 @@ export default function DashboardPreview() {
         </div>
 
         <div className="dashboard-grid">
-          <div className="dash-card">
+          <TiltCard className="dash-card">
             <span>Calories</span>
             <h3>2145</h3>
             <small>🔥 Today</small>
-          </div>
+          </TiltCard>
 
-          <div className="dash-card">
+          <TiltCard className="dash-card">
             <span>Water</span>
             <h3>3.4L</h3>
             <small>💧 Goal</small>
-          </div>
+          </TiltCard>
 
-          <div className="dash-card">
+          <TiltCard className="dash-card">
             <span>Workout</span>
             <h3>Done</h3>
             <small>✅ Completed</small>
-          </div>
+          </TiltCard>
 
-          <div className="dash-card">
+          <TiltCard className="dash-card">
             <span>Brand Score</span>
             <h3>92%</h3>
             <small>📈 +8%</small>
-          </div>
+          </TiltCard>
         </div>
 
         <div className="growth">

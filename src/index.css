@@ -436,21 +436,16 @@ a {
 /* CARD */
 
 .feature-card {
-  background: #101827;
-
+  background: rgba(16, 24, 39, 55);
   padding: 40px 30px;
-
+  backdrop-filter: blur(20px);
   border-radius: 24px;
-
-  border: 1px solid rgba(255, 255, 255, 0.06);
-
+  border: 1px solid rgba(255, 255, 255, 0.08);
   transition: 0.45s;
-
   position: relative;
-
   overflow: hidden;
-
   cursor: pointer;
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .feature-card::before {
@@ -737,15 +732,13 @@ a {
 }
 
 .dash-card {
-  background: #101827;
-
+  background: rgba(16, 24, 39, 0.55);
+  backdrop-filter: blur(20px);
   padding: 25px;
-
   border-radius: 18px;
-
   border: 1px solid rgba(255, 255, 255, 0.05);
-
   transition: 0.35s;
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .dash-card:hover {
@@ -904,4 +897,112 @@ a {
   color: #94a3b8;
 
   font-size: 15px;
+}
+
+.feature-card,
+.dash-card {
+  transform-style: preserve-3d;
+
+  will-change: transform;
+
+  transition:
+    transform 0.15s linear,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.feature-icon,
+.feature-card h3,
+.feature-card p,
+.dash-card span,
+.dash-card h3,
+.dash-card small {
+  transform: translateZ(40px);
+}
+
+.feature-card:hover,
+.dash-card:hover {
+  box-shadow: 0 0 0 1px rgba(0, 229, 168, 0.25);
+  box-shadow: 0 20 50px rgba(0, 229, 168, 0.18);
+  box-shadow: 0 0 80px rgba(0, 229, 168, 0.08);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  max-width: 1300px;
+  padding: 18px 40px;
+  z-index: 999;
+  transition: 0.4s;
+  background: transparent;
+}
+
+.navbar-scroll {
+  background: rgba(17, 24, 39, 0.75);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+.logo span {
+  background: #00e5a8;
+  color: #08111f;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  margin-left: 6px;
+}
+
+.nav-links a {
+  position: relative;
+  transition: 0.3s;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: #00e5a8;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #00e5a8;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.hero {
+  padding-top: 150px;
+}
+
+.placeholder-section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.magnetic {
+  transition: 25s ease;
+}
+
+.magnetic:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 0 35px rgba(0, 229, 168, 0.45);
 }

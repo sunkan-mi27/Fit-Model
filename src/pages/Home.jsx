@@ -13,7 +13,7 @@ export default function Home() {
       <Background />
       <MouseGlow />
       <Navbar />
-      <section className="hero reveal">
+      <section id="home" className="hero reveal">
         <div className="hero-content">
           <span className="tag">Performance • Portfolio • Progress</span>
 
@@ -74,9 +74,19 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <Features />
-      <TrustedStats />
-      <DashboardPreview />
+      <div id="features">
+        <Features />
+      </div>
+      <div id="models">
+        <TrustedStats />
+      </div>
+      <div id="dasboard">
+        <DashboardPreview />
+      </div>
+
+      <section id="pricing" className="placeholder-section reveal">
+        <h2>Pricing</h2>
+      </section>
     </>
   );
 }
