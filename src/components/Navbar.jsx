@@ -3,14 +3,19 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   return (
     <nav className="navbar">
-      <h2 className="logo">FITMODEL OS</h2>
+      <div className="logo">
+        <span>FitModel</span>
+        <small>OS</small>
+      </div>
 
       <div className="nav-links">
-        <Link to="/">Home</Link>
-        <Link to="/portfolio">Portfolio</Link>
+        <a href="#features">Features</a>
+        <a href="#models">Models</a>
+        <a href="#pricing">Pricing</a>
         <Link to="/dashboard">Dashboard</Link>
-        <Link to="/login">Login</Link>
       </div>
+
+      <button className="nav-btn">Get Started</button>
     </nav>
   );
 }

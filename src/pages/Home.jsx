@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar";
+import Features from "../components/Features";
 
 export default function Home() {
   return (
@@ -12,14 +13,13 @@ export default function Home() {
           <h1>
             Build Your Body.
             <br />
-            Build Your Brand.
-            <br />
             Own Your Growth
           </h1>
 
           <p>
             Track your fitness journey, showcase your portfolio and manage your
-            growth from one powerful platform.
+            growth from one powerful platform. <br />
+            Trusted by over 2,000 fitness professionals worldwide♻
           </p>
 
           <div className="hero-buttons">
@@ -28,7 +28,7 @@ export default function Home() {
             <button className="btn-secondary">Live Demo</button>
           </div>
 
-          <div className="ative-models">
+          <div className="active-models">
             👤 👤 👤 👤 <span>2K+ Active Models</span>
           </div>
         </div>
@@ -37,40 +37,37 @@ export default function Home() {
           <div className="profile-header">
             <div className="avatar">S</div>
 
-            <div>
-              <h3>Sunkanmi</h3>
-              <p>Elite Fitness Model</p>
+            <div className="profile-info">
+              <h3>SUNKANMI</h3>
+              <p>Elite Fitness Model ✔</p>
             </div>
           </div>
 
-          <div className="stats">
-            <div className="stat">
-              <h4>Weight</h4>
-              <span>78kg</span>
+          <div className="stats-grid">
+            <div className="stat-box">
+              <span>Weight</span>
+              <h2>78kg</h2>
+              <small>+2.4%</small>
             </div>
 
-            <div className="stat">
-              <h4>Body Fat</h4>
-              <span>12%</span>
-            </div>
-
-            <div className="stat">
-              <h4>Growth</h4>
-              <span>+18%</span>
+            <div className="stat-box">
+              <span>Growth</span>
+              <h2>+18%</h2>
+              <small>This Month</small>
             </div>
           </div>
 
-          <div className="portfolio-score">
+          <div className="portfolio-progress">
             <h4>Portfolio Score</h4>
+            <h2>92%</h2>
 
             <div className="progress-bar">
-              <div className="progress"></div>
+              <div className="progress-fill"></div>
             </div>
-
-            <span>92%</span>
           </div>
         </div>
       </section>
+      <Features />
     </>
   );
 }
