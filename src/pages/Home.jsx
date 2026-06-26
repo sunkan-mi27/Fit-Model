@@ -3,6 +3,8 @@ import Features from "../components/Features";
 import Background from "../components/Background";
 import MouseGlow from "../components/MouseGlow";
 import useReveal from "../hooks/useReveal";
+import DashboardPreview from "../components/DashboardPreview";
+import TrustedStats from "../components/TrustedStats";
 
 export default function Home() {
   useReveal();
@@ -73,6 +75,8 @@ export default function Home() {
         </div>
       </section>
       <Features />
+      <TrustedStats />
+      <DashboardPreview />
     </>
   );
 }
