@@ -1,4 +1,5 @@
 import TiltCard from "./TiltCard";
+import BodyScanner from "./BodyScanner"
 
 export default function DashboardPreview() {
   return (

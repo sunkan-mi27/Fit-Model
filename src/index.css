@@ -1006,3 +1006,79 @@ html {
   transform: translateY(-4px) scale(1.05);
   box-shadow: 0 0 35px rgba(0, 229, 168, 0.45);
 }
+
+.dna {
+  width: min(900px, 90%);
+  margin: 120px auto;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(0, 255, 255, 0.15);
+  border-radius: 30px;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: 1s;
+}
+
+.dna.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dna-tag {
+  color: #32ffe6;
+  letter-spacing: 3px;
+  font-size: 0.8rem;
+  margin-bottom: 15px;
+}
+
+.dna h2 {
+  font-size: 3rem;
+  margin-bottom: 40px;
+}
+
+.dna-item {
+  margin-bottom: 25px;
+}
+
+.dna-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.dna-bar {
+  height: 12px;
+  background: #1b2238;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.dna-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00f7ff, #3cff8f);
+  border-radius: 50px;
+  box-shadow: 0 0 25px cyan;
+  transition: 2s;
+}
+
+.dna-card {
+  margin-top: 45px;
+  padding: 30px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #00e5ff22, #6effc822);
+  border: 1px solid #2cffea66;
+  text-align: center;
+}
+
+.dna-card h3 {
+  font-size: 2rem;
+  color: #4effff;
+  margin-bottom: 12px;
+}
+
+.dna-card p {
+  color: #cfd8dc;
+  line-height: 1.8;
+}

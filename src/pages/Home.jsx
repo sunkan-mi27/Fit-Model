@@ -5,6 +5,8 @@ import MouseGlow from "../components/MouseGlow";
 import useReveal from "../hooks/useReveal";
 import DashboardPreview from "../components/DashboardPreview";
 import TrustedStats from "../components/TrustedStats";
+import FitnessDNA from "../components/FitnessDNA";
+import BodyScanner from "../components/BodyScanner";
 
 export default function Home() {
   useReveal();
@@ -80,10 +82,12 @@ export default function Home() {
       <div id="models">
         <TrustedStats />
       </div>
-      <div id="dasboard">
+      <div id="dashboard">
         <DashboardPreview />
       </div>
 
+      <FitnessDNA />
+      <BodyScanner />
       <section id="pricing" className="placeholder-section reveal">
         <h2>Pricing</h2>
       </section>
