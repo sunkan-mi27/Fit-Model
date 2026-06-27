@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-top">
         <div>
-          <h2>FitModel OS</h2>
+          <h2>FitModel Operating Service</h2>
           <p>
             The all-in-one platform for fitness models, athletes and creators.
           </p>
