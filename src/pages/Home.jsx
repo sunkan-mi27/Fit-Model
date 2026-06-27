@@ -8,6 +8,7 @@ import TrustedStats from "../components/TrustedStats";
 import FitnessDNA from "../components/FitnessDNA";
 import BodyScanner from "../components/BodyScanner";
 import Testimonials from "../components/Testimonials";
+import Pricing from "../components/Pricing";
 
 export default function Home() {
   useReveal();
@@ -90,9 +91,9 @@ export default function Home() {
       <FitnessDNA />
       <BodyScanner />
       <Testimonials />
-      <section id="pricing" className="placeholder-section reveal">
-        <h2>Pricing</h2>
-      </section>
+      <div id="pricing">
+        <Pricing />
+      </div>
     </>
   );
 }
