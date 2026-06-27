@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [scroll, setScroll] = useState();
@@ -22,7 +23,7 @@ export default function Navbar() {
         <a href="#features">Features</a>
         <a href="#models">Models</a>
         <a href="#pricing">Pricing</a>
-        <a href="#dashboard">Dashboard</a>
+        <Link to="/dashboard">Dashboard</Link>
       </div>
 
       <button className="btn-primary magnetic">Get Started</button>
