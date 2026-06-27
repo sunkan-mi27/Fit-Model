@@ -1,4 +1,5 @@
 import DashboardLayout from "../layouts/DashboardLayout";
+import WorkoutCalendar from "../components/WorkoutCalendar";
 import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from "recharts";
 
 const data = [
@@ -80,6 +81,7 @@ export default function Dashboard() {
 
             <button className="btn-primary">View Advice</button>
           </div>
+          <WorkoutCalendar />
         </div>
       </>
     </DashboardLayout>

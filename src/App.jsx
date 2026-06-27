@@ -7,6 +7,9 @@ import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import Loader from "./components/Loader";
+import Workouts from "./pages/Workouts";
+import Nutrition from "./pages/Nutrition";
+import Portfolio from "./pages/Portfolio";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -29,6 +32,9 @@ export default function App() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/settings" element={<Settings />} />
+      <Route path="/workouts" element={<Workouts />} />
+      <Route path="/nutrition" element={<Nutrition />} />
+      <Route path="/portfolio" element={<Portfolio />} />
     </Routes>
   );
 }
