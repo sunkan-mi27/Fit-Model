@@ -9,6 +9,7 @@ import FitnessDNA from "../components/FitnessDNA";
 import BodyScanner from "../components/BodyScanner";
 import Testimonials from "../components/Testimonials";
 import Pricing from "../components/Pricing";
+import Footer from "../components/Footer.jsx";
 
 export default function Home() {
   useReveal();
@@ -94,6 +95,8 @@ export default function Home() {
       <div id="pricing">
         <Pricing />
       </div>
+
+      <Footer />
     </>
   );
 }
