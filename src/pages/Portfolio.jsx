@@ -46,7 +46,7 @@ export default function Portfolio() {
       <section className="command-center">
         <div className="command-header">
           <div>
-            <small>LIVE PERFORMANCE</small>
+            <small>♻LIVE PERFORMANCE</small>
 
             <h2>Performance Command Center</h2>
           </div>
@@ -115,10 +115,97 @@ export default function Portfolio() {
         </div>
       </section>
 
+      <section className="recruiter-intelligence">
+        <div className="intel-header">
+          <small>♻RECRUITER INTELLIGENCE</small>
+
+          <h2>Opportunity Prediction Engine</h2>
+
+          <p>
+            Continuously analyzes your portfolio performance and predicts career
+            opportunities before they happen.
+          </p>
+        </div>
+
+        <div className="intel-grid">
+          <div className="prediction-card">
+            <h3>Career Score</h3>
+
+            <div className="career-circle">
+              <div className="career-value">97%</div>
+            </div>
+
+            <span>Elite Recruiter Confidence</span>
+          </div>
+
+          <div className="prediction-card">
+            <h3>Brand Match</h3>
+
+            <div className="brand-list">
+              <div className="brand-row">
+                <span>Nike</span>
+                <div className="brand-bar">
+                  <div style={{ width: "94%" }}></div>
+                </div>
+              </div>
+
+              <div className="brand-row">
+                <span>Gymshark</span>
+                <div className="brand-bar">
+                  <div style={{ width: "88%" }}></div>
+                </div>
+              </div>
+
+              <div className="brand-row">
+                <span>Under Armour</span>
+                <div className="brand-bar">
+                  <div style={{ width: "83%" }}></div>
+                </div>
+              </div>
+
+              <div className="brand-row">
+                <span>Adidas</span>
+                <div className="brand-bar">
+                  <div style={{ width: "79%" }}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="prediction-card">
+            <h3> Predictions</h3>
+
+            <div className="prediction-feed">
+              <div>🔥 91% chance of sponsorship this month</div>
+
+              <div>📸 Portfolio likely to trend this week</div>
+
+              <div>💼 Recruiter activity increasing</div>
+
+              <div>⭐ Profile engagement up +28%</div>
+
+              <div>🚀 High probability of agency invitation</div>
+            </div>
+          </div>
+
+          <div className="prediction-card earnings">
+            <h3>Estimated Annual Earnings</h3>
+
+            <h1>$185,000</h1>
+
+            <small>
+              Based on your current portfolio growth and recruiter demand.
+            </small>
+
+            <button className="btn-primary">View Full AI Report</button>
+          </div>
+        </div>
+      </section>
+
       <section className="booking-section">
         <div className="booking-header">
           <div>
-            <small>ACTIVE BOOKINGS</small>
+            <small>♻ACTIVE BOOKINGS</small>
 
             <h2>Brand Deals Pipeline</h2>
 
@@ -198,7 +285,7 @@ export default function Portfolio() {
       <section className="portfolio-gallery">
         <div className="gallery-header">
           <div>
-            <small>PORTFOLIO</small>
+            <small>♻PORTFOLIO</small>
 
             <h2>Featured Campaigns</h2>
 
@@ -279,7 +366,7 @@ export default function Portfolio() {
       <section className="elite-analytics">
         <div className="analytics-head">
           <div>
-            <small>CAREER ANALYTICS</small>
+            <small>♻CAREER ANALYTICS</small>
 
             <h2>Elite Performance Intelligence</h2>
 
@@ -349,9 +436,9 @@ export default function Portfolio() {
       <section className="mission-control">
         <div className="mission-header">
           <div>
-            <small>MISSION CONTROL</small>
+            <small>♻MISSION CONTROL</small>
 
-            <h2>AI Career Operations Center</h2>
+            <h2>Career Operations Center</h2>
 
             <p>Real-time insights powering your fitness career.</p>
           </div>
@@ -364,7 +451,7 @@ export default function Portfolio() {
 
         <div className="mission-grid">
           <div className="mission-card ai">
-            <h3>🤖 AI Assistant</h3>
+            <h3>🤖 Assistant</h3>
 
             <ul>
               <li>Increase posting frequency this week.</li>
@@ -424,7 +511,7 @@ export default function Portfolio() {
 
               <div className="timeline-item">
                 <span></span>
-                AI Score Increased
+                Score Increased
               </div>
             </div>
           </div>
@@ -434,7 +521,7 @@ export default function Portfolio() {
       <section className="digital-profile">
         <div className="profile-head">
           <div>
-            <small>DIGITAL ATHLETE</small>
+            <small>♻DIGITAL ATHLETE</small>
 
             <h2>Elite Athlete Profile</h2>
 
@@ -499,6 +586,341 @@ export default function Portfolio() {
               <span>Legs</span>
               <strong>64 cm</strong>
             </div>
+          </div>
+        </div>
+      </section>
+      <section className="recruiter-desk">
+        <div className="desk-header">
+          <div>
+            <small>♻LIVE AGENCY DESK</small>
+            <h2>Recruiter Intelligence Center</h2>
+            <p>
+              Manage recruiter conversations, offers, contracts and
+              opportunities from one dashboard.
+            </p>
+          </div>
+
+          <div className="desk-live">
+            <span className="live-dot"></span>
+            LIVE
+          </div>
+        </div>
+
+        <div className="desk-grid">
+          <div className="message-panel">
+            <h3>Recent Recruiters</h3>
+
+            <div className="message-card">
+              <div className="avatar-mini">N</div>
+
+              <div>
+                <strong>Ivy Athletics</strong>
+                <p>Campaign inquiry received.</p>
+              </div>
+
+              <small>2m</small>
+            </div>
+
+            <div className="message-card">
+              <div className="avatar-mini">E</div>
+
+              <div>
+                <strong>Elite Sports</strong>
+                <p>Requested portfolio review.</p>
+              </div>
+
+              <small>14m</small>
+            </div>
+
+            <div className="message-card">
+              <div className="avatar-mini">A</div>
+
+              <div>
+                <strong>Alpha Models</strong>
+                <p>Contract awaiting signature.</p>
+              </div>
+
+              <small>1h</small>
+            </div>
+          </div>
+
+          <div className="offer-panel">
+            <h3>Open Opportunities</h3>
+
+            <div className="offer-item">
+              <span>Fitness Campaign</span>
+              <strong>$4,500</strong>
+            </div>
+
+            <div className="offer-item">
+              <span>Brand Ambassador</span>
+              <strong>$8,000</strong>
+            </div>
+
+            <div className="offer-item">
+              <span>Commercial Shoot</span>
+              <strong>$2,200</strong>
+            </div>
+
+            <button className="btn-primary">View All Opportunities</button>
+          </div>
+
+          <div className="ai-recruiter">
+            <h3>🤖Recruiter Assistant</h3>
+
+            <div className="ai-tip success">
+              Highest chance of acceptance:
+              <strong> Ivy Athletics</strong>
+            </div>
+
+            <div className="ai-tip">
+              Portfolio score increased by
+              <strong> +12%</strong>
+            </div>
+
+            <div className="ai-tip">
+              Best time to reply:
+              <strong> 8:00 PM</strong>
+            </div>
+
+            <div className="ai-tip">
+              Estimated monthly earnings:
+              <strong> $18,500</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="analytics-studio">
+        <div className="studio-header">
+          <div>
+            <small>♻ ANALYTICS</small>
+
+            <h2>Performance Intelligence Studio</h2>
+
+            <p>
+              Real-time analytics showing portfolio growth, recruiter activity,
+              engagement and earnings predictions.
+            </p>
+          </div>
+
+          <button className="btn-primary">Export Report</button>
+        </div>
+
+        <div className="studio-grid">
+          <div className="analytics-large">
+            <h3>Monthly Growth</h3>
+
+            <div className="growth-chart">
+              <span style={{ height: "28%" }}></span>
+
+              <span style={{ height: "40%" }}></span>
+
+              <span style={{ height: "52%" }}></span>
+
+              <span style={{ height: "60%" }}></span>
+
+              <span style={{ height: "72%" }}></span>
+
+              <span style={{ height: "88%" }}></span>
+
+              <span style={{ height: "100%" }}></span>
+            </div>
+
+            <div className="chart-labels">
+              <small>Jan</small>
+
+              <small>Feb</small>
+
+              <small>Mar</small>
+
+              <small>Apr</small>
+
+              <small>May</small>
+
+              <small>Jun</small>
+
+              <small>Jul</small>
+            </div>
+          </div>
+
+          <div className="analytics-small">
+            <h4>Portfolio Views</h4>
+
+            <h1>148,294</h1>
+
+            <span>▲ +18% this month</span>
+          </div>
+
+          <div className="analytics-small">
+            <h4>Recruiter Engagement</h4>
+
+            <h1>96%</h1>
+
+            <span>Highest ever</span>
+          </div>
+
+          <div className="analytics-small">
+            <h4>Estimated Revenue</h4>
+
+            <h1>$18,500</h1>
+
+            <span>Projected Monthly</span>
+          </div>
+
+          <div className="analytics-small">
+            <h4> Prediction</h4>
+
+            <h1>+31%</h1>
+
+            <span>Growth Expected</span>
+          </div>
+        </div>
+      </section>
+
+      <section className="global-presence">
+        <div className="presence-left">
+          <small>♻GLOBAL REACH</small>
+
+          <h2>Worldwide Recruiter Activity</h2>
+
+          <p>
+            Live intelligence showing where recruiters are currently viewing
+            your profile around the world.
+          </p>
+
+          <div className="world-map">
+            <div className="pulse us"></div>
+            <div className="pulse uk"></div>
+            <div className="pulse nigeria"></div>
+            <div className="pulse dubai"></div>
+            <div className="pulse japan"></div>
+            <div className="pulse canada"></div>
+          </div>
+        </div>
+
+        <div className="presence-right">
+          <div className="activity-feed">
+            <h3>Live Activity</h3>
+
+            <div className="feed-item">
+              🟢 Nike recruiter viewed your portfolio
+              <small>12 sec ago</small>
+            </div>
+
+            <div className="feed-item">
+              🔥 Elite Agency downloaded your media kit
+              <small>1 min ago</small>
+            </div>
+
+            <div className="feed-item">
+              ⭐ New profile follower
+              <small>3 mins ago</small>
+            </div>
+
+            <div className="feed-item">
+              📩 Interview invitation received
+              <small>9 mins ago</small>
+            </div>
+
+            <div className="feed-item">
+              💰 New sponsorship opportunity
+              <small>18 mins ago</small>
+            </div>
+          </div>
+
+          <div className="country-stats">
+            <div>
+              <h1>🇺🇸</h1>
+              <span>United States</span>
+              <strong>46%</strong>
+            </div>
+
+            <div>
+              <h1>🇬🇧</h1>
+              <span>United Kingdom</span>
+              <strong>18%</strong>
+            </div>
+
+            <div>
+              <h1>🇳🇬</h1>
+              <span>Nigeria</span>
+              <strong>14%</strong>
+            </div>
+
+            <div>
+              <h1>🇨🇦</h1>
+              <span>Canada</span>
+              <strong>11%</strong>
+            </div>
+
+            <div>
+              <h1>🇯🇵</h1>
+              <span>Japan</span>
+              <strong>7%</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="command-center">
+        <div className="command-left">
+          <small>♻ COMMAND CENTER</small>
+
+          <h2>Platform Intelligence</h2>
+
+          <p>
+            Every part of your career is monitored in real-time by FitModel
+            <strong> OS.</strong>
+          </p>
+
+          <div className="system-grid">
+            <div className="system-card online">
+              <span>Engine</span>
+              <h3>ONLINE</h3>
+            </div>
+
+            <div className="system-card">
+              <span>Database</span>
+              <h3>99.99%</h3>
+            </div>
+
+            <div className="system-card">
+              <span>API Speed</span>
+              <h3>42ms</h3>
+            </div>
+
+            <div className="system-card">
+              <span>Security</span>
+              <h3>Protected</h3>
+            </div>
+          </div>
+        </div>
+
+        <div className="terminal">
+          <div className="terminal-top">
+            <span className="dot red"></span>
+            <span className="dot yellow"></span>
+            <span className="dot green"></span>
+
+            <h4>LIVE SYSTEM LOGS</h4>
+          </div>
+
+          <div className="terminal-body">
+            <p>{">"}Engine Connected...</p>
+
+            <p>{">"}Recruiter detected from London...</p>
+
+            <p>{">"}Portfolio Score recalculated...</p>
+
+            <p>{">"}Sponsorship Opportunity Found...</p>
+
+            <p>{">"} Media Kit Downloaded...</p>
+
+            <p>{">"}Body Metrics Synced...</p>
+
+            <p>{">"}Analytics Updated...</p>
+
+            <p className="typing-line">{">"}Waiting for next event...</p>
           </div>
         </div>
       </section>
