@@ -8,14 +8,8 @@ export default function Loader({ onFinish }) {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(timer);
-
-          setTimeout(() => {
-            onFinish();
-          }, 500);
-
           return 100;
         }
-
         return prev + 2;
       });
     }, 40);

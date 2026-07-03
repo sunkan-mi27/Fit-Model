@@ -19,6 +19,10 @@ export default function Sidebar() {
         <Link to="/portfolio">📁 Portfolio</Link>
 
         <Link to="/settings">⚙️ Settings</Link>
+
+        <Link to="/discover">🌍 Discover</Link>
+
+        <Link to="/messages">💬 Messages</Link>
       </nav>
     </aside>
   );

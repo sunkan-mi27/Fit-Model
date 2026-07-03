@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -10,7 +10,9 @@ import Loader from "./components/Loader";
 import Workouts from "./pages/Workouts";
 import Nutrition from "./pages/Nutrition";
 import Portfolio from "./pages/Portfolio";
-
+import AICoach from "./pages/AICoach";
+import Discover from "./pages/Discover";
+import Messages from "./pages/Messages";
 export default function App() {
   const [loading, setLoading] = useState(true);
 
@@ -35,6 +37,9 @@ export default function App() {
       <Route path="/workouts" element={<Workouts />} />
       <Route path="/nutrition" element={<Nutrition />} />
       <Route path="/portfolio" element={<Portfolio />} />
+      <Route path="/ai-coach" element={<AICoach />} />
+      <Route path="/discover" element={<Discover />} />
+      <Route path="/messages" element={<Messages />} />
     </Routes>
   );
 }
