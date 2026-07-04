@@ -105,11 +105,13 @@ a {
 .hero-card::before {
   content: "";
   position: absolute;
-  inset: -2px;
-  background: #00e5a8;
-  filter: blur(70px);
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, #22c55e55, transparent 70%);
+  filter: blur(45px);
+  top: -140px;
   opacity: 45;
-  z-index: -1;
+  pointer-events: none;
 }
 .hero-buttons {
   display: flex;
@@ -136,13 +138,21 @@ a {
   width: 520px;
   padding: 28px;
   border-radius: 28px;
-  background: rgba(18, 22, 30, 0.72);
-  backdrop-filter: blur(22px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(
+    135deg,
+    #030303 0%,
+    #090909 45%,
+    #0f1b12 78%,
+    #184d2b 100%
+  );
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(34, 197, 94, 0.22);
   box-shadow:
-    0 0 60px rgba(34, 197, 94, 0.12),
-    inset 0 1px rgba(255, 255, 255, 0.08);
+    0 20px 60px rgba(0, 0, 0, 0.55),
+    inset 0 0 40px rgba(34, 197, 94, 0.12);
   display: flex;
+  overflow: hidden;
+  position: relative;
   flex-direction: column;
   gap: 24px;
 }
@@ -1788,6 +1798,157 @@ html {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 
   gap: 25px;
+}
+
+.dashboard-back {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.ai-home-btn {
+  position: fixed;
+
+  top: 28px;
+
+  left: 28px;
+
+  width: 68px;
+
+  height: 68px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  border-radius: 50%;
+
+  text-decoration: none;
+
+  z-index: 99999;
+}
+
+.ai-home-core {
+  width: 68px;
+
+  height: 68px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  border-radius: 50%;
+
+  background: #111;
+
+  border: 2px solid #22c55e;
+
+  font-size: 30px;
+
+  color: #22c55e;
+
+  box-shadow:
+    0 0 15px #22c55e,
+    0 0 40px rgba(34, 197, 94, 0.45),
+    inset 0 0 20px rgba(34, 197, 94, 0.25);
+
+  transition: 0.4s;
+
+  position: relative;
+
+  z-index: 5;
+}
+
+.ai-home-text {
+  position: absolute;
+
+  left: 90px;
+
+  padding: 12px 18px;
+
+  border-radius: 30px;
+
+  background: rgba(10, 10, 10, 0.92);
+
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(34, 197, 94, 0.35);
+
+  color: white;
+
+  font-weight: 600;
+
+  opacity: 0;
+
+  transform: translateX(-20px);
+
+  transition: 0.35s;
+
+  white-space: nowrap;
+}
+
+.ai-home-btn:hover .ai-home-text {
+  opacity: 1;
+
+  transform: translateX(0);
+}
+
+.ai-home-btn:hover .ai-home-core {
+  transform: scale(1.12) rotate(12deg);
+}
+
+.pulse {
+  position: absolute;
+
+  border-radius: 50%;
+
+  border: 2px solid #22c55e;
+
+  opacity: 0;
+
+  animation: homePulse 3s infinite;
+}
+
+.pulse1 {
+  width: 70px;
+
+  height: 70px;
+
+  animation-delay: 0s;
+}
+
+.pulse2 {
+  width: 90px;
+
+  height: 90px;
+
+  animation-delay: 1s;
+}
+
+.pulse3 {
+  width: 110px;
+
+  height: 110px;
+
+  animation-delay: 2s;
+}
+
+@keyframes homePulse {
+  0% {
+    transform: scale(0.8);
+
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1.8);
+
+    opacity: 0;
+  }
 }
 
 .dash-card {
