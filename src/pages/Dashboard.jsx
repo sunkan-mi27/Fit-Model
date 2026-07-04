@@ -1,4 +1,8 @@
 import DashboardLayout from "../layouts/DashboardLayout";
+import DashboardHero from "../components/DashboardHero";
+import QuickActions from "../components/QuickActions";
+import LiveStatus from "../components/LiveStatus";
+import DailyMission from "../components/DailyMission";
 import WorkoutCalendar from "../components/WorkoutCalendar";
 import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from "recharts";
 
@@ -15,6 +19,9 @@ const data = [
 export default function Dashboard() {
   return (
     <DashboardLayout>
+      <DashboardHero />
+      <QuickActions />
+      <LiveStatus />
       <>
         <h1 className="dashboard-title">Welcome Back, Sunkanmi 👋</h1>
 
@@ -84,6 +91,7 @@ export default function Dashboard() {
           <WorkoutCalendar />
         </div>
       </>
+      <DailyMission />
     </DashboardLayout>
   );
 }

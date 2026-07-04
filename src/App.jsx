@@ -13,6 +13,8 @@ import Portfolio from "./pages/Portfolio";
 import AICoach from "./pages/AICoach";
 import Discover from "./pages/Discover";
 import Messages from "./pages/Messages";
+import Wallet from "./pages/Wallet";
+import Analytics from "./pages/Analytics";
 export default function App() {
   const [loading, setLoading] = useState(true);
 
@@ -40,6 +42,8 @@ export default function App() {
       <Route path="/ai-coach" element={<AICoach />} />
       <Route path="/discover" element={<Discover />} />
       <Route path="/messages" element={<Messages />} />
+      <Route path="/wallet" element={<Wallet />} />
+      <Route path="/analytics" element={<Analytics />} />
     </Routes>
   );
 }
