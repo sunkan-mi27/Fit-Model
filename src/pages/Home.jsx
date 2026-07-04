@@ -45,36 +45,85 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-card">
-          <div className="profile-header">
-            <div className="avatar">S</div>
+        <div className="hero-visual">
+          <div className="orb orb1"></div>
+          <div className="orb orb2"></div>
+          <div className="grid-lines"></div>
 
-            <div className="profile-info">
-              <h3>SUNKANMI</h3>
-              <p>Elite Fitness Model ✔</p>
+          <div className="hero-card">
+            <div className="hero-profile">
+              <div className="hero-avatar">
+                S<span className="online-dot"></span>
+              </div>
+
+              <div>
+                <h2>SUNKANMI IBRAHIM</h2>
+                <p>Elite Fitness Model ✔️</p>
+                <small>ID : FM-8891-ELITE</small>
+              </div>
             </div>
-          </div>
 
-          <div className="stats-grid">
-            <div className="stat-box">
-              <span>Weight</span>
-              <h2>78kg</h2>
-              <small>+2.4%</small>
+            <div className="system-status">
+              <span className="pulse"></span>
+              SYSTEM ONLINE
             </div>
 
-            <div className="stat-box">
-              <span>Growth</span>
-              <h2>+18%</h2>
-              <small>This Month</small>
+            <div className="hero-stats">
+              <div className="glass-stat">
+                <small>⚖️ Weight</small>
+                <p className="stat-change positive">▲ +0.6kg</p>
+                <h2>78.4kg</h2>
+              </div>
+
+              <div className="glass-stat">
+                <small>🔥 Body Fat</small>
+                <p className="stat-change negative">▼ -0.3%</p>
+                <h2>12.6%</h2>
+              </div>
+
+              <div className="glass-stat">
+                <small>💪 Muscle</small>
+                <p className="stat-change positive">▲ +1.2kg</p>
+                <h2>68.7kg</h2>
+              </div>
+
+              <div className="glass-stat">
+                <small>📈 Growth</small>
+                <p className="stat-change positive">▲ +2.4%</p>
+                <h2>+18.2%</h2>
+              </div>
             </div>
-          </div>
 
-          <div className="portfolio-progress">
-            <h4>Portfolio Score</h4>
-            <h2>92%</h2>
+            <div className="goal-card">
+              <div className="goal-left">
+                <h4>Weekly Goal</h4>
+                <p>Performance Score</p>
+              </div>
 
-            <div className="progress-bar">
-              <div className="progress-fill"></div>
+              <div className="progress-ring">
+                <svg width="90" height="90">
+                  <circle className="ring-bg" cx="45" cy="45" r="36" />
+                  <circle className="ring-progress" cx="45" cy="45" r="36" />
+                </svg>
+                <div className="ring-text">92%</div>
+              </div>
+            </div>
+
+            <div className="coach-box">
+              <div className="coach-header">
+                <div className="ai-avatar">🤖</div>
+                <div>
+                  <h4>FITMODEL AI</h4>
+
+                  <small>
+                    <span className="ai-online"></span>ONLINE
+                  </small>
+                </div>
+              </div>
+              <div className="coach-message">
+                Excellent recovery detected. Protein absorption is optimal.
+                Tomorrow's recommended training intensity:<strong>HIGH</strong>
+              </div>
             </div>
           </div>
         </div>

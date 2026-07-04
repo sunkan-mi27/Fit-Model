@@ -1,4 +1,5 @@
 import "./BodyScanner.css";
+import humanScan from "../assets/human-scan.png";
 
 export default function BodyScanner() {
   return (
@@ -9,65 +10,65 @@ export default function BodyScanner() {
 
       <div className="scanner-box">
         <div className="scanner-body">
-          <div className="body-outline"></div>
+          <div className="scanner-grid-bg"></div>
+
+          <div className="scanner-ring ring-one"></div>
+
+          <div className="scanner-ring ring-two"></div>
+
+          <div className="scanner-ring ring-three"></div>
+
+          <div className="scanner-glow"></div>
+
+          <div className="scanner-image">
+            <img src={humanScan} alt="Human Scan" />
+          </div>
+
           <div className="scan-line"></div>
-          <div className="hologram">
-            <div className="head"></div>
-            <div className="body"></div>
-            <div className="arm left"></div>
-            <div className="arm right"></div>
-            <div className="leg left"></div>
-            <div className="leg right"></div>
+
+          <div className="scan-particles">
+            <span></span>
+
+            <span></span>
+
+            <span></span>
+
+            <span></span>
+
+            <span></span>
           </div>
 
-          <div className="scan-grid"></div>
-          <div className="analysis-complete">ANALYSIS COMPLETED</div>
-          <div className="terminal">
-            <span className="line1">{">"}Initializing...</span>
-            <span className="line2">{">"}Mapping skeletal structure...</span>
-            <span className="line3">{">"}Calculating muscle symmetry...</span>
-            <span className="line4">{">"}Fitness DNA matched...</span>
-          </div>
-          <div className="classification">
-            <p className="class-tag">FITMODEL CLASSIFICATION</p>
-            <h1 className="class-title">⚡ALPHA BUILDER</h1>
-
-            <div className="confidence">
-              <span>Confidence</span>
-              <strong>99.2%</strong>
-            </div>
-
-            <div className="confidence-bar">
-              <div className="confidence-fill"></div>
-            </div>
+          <div className="scanner-status">
+            <span className="live-dot"></span>
+            LIVE BODY ANALYSIS
           </div>
         </div>
+      </div>
 
-        <div className="results">
-          <div className="result reveal-1">
-            <span>Muscle Mass</span>
-            <strong>91%</strong>
-          </div>
+      <div className="results">
+        <div className="result reveal-1">
+          <span>Muscle Mass</span>
+          <strong>91%</strong>
+        </div>
 
-          <div className="result reveal-2">
-            <span>Body Fat</span>
-            <strong>12%</strong>
-          </div>
+        <div className="result reveal-2">
+          <span>Body Fat</span>
+          <strong>12%</strong>
+        </div>
 
-          <div className="result reveal-3">
-            <span>Symmetry</span>
-            <strong>95%</strong>
-          </div>
+        <div className="result reveal-3">
+          <span>Symmetry</span>
+          <strong>95%</strong>
+        </div>
 
-          <div className="result reveal-4">
-            <span>Recovery</span>
-            <strong>97%</strong>
-          </div>
+        <div className="result reveal-4">
+          <span>Recovery</span>
+          <strong>97%</strong>
+        </div>
 
-          <div className="result reveal-5 elite">
-            <span>AI Verdict</span>
-            <strong>ELITE</strong>
-          </div>
+        <div className="result reveal-5 elite">
+          <span>AI Verdict</span>
+          <strong>ELITE</strong>
         </div>
       </div>
     </section>

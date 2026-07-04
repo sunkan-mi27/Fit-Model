@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link as ScrollLink } from "react-scroll";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
@@ -20,9 +21,30 @@ export default function Navbar() {
       </div>
 
       <div className="nav-links">
-        <a href="#features">Features</a>
-        <a href="#models">Models</a>
-        <a href="#pricing">Pricing</a>
+        <ScrollLink
+          className="nav-link"
+          to="features"
+          smooth={true}
+          duration={500}
+        >
+          Features
+        </ScrollLink>
+        <ScrollLink
+          className="nav-link"
+          to="models"
+          smooth={true}
+          duration={500}
+        >
+          Models
+        </ScrollLink>
+        <ScrollLink
+          className="nav-link"
+          to="pricing"
+          smooth={true}
+          duration={500}
+        >
+          Pricing
+        </ScrollLink>
         <Link to="/dashboard">Dashboard</Link>
       </div>
 

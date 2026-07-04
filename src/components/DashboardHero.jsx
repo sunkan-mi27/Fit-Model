@@ -1,3 +1,3 @@
-export default function DashboarHero() {
-  return <div>Dashboard Hero</div>;
+export default function DashboardHero() {
+  // return <div>Dashboard Hero</div>;
 }

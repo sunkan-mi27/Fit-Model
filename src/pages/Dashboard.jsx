@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import DashboardLayout from "../layouts/DashboardLayout";
 import DashboardHero from "../components/DashboardHero";
 import QuickActions from "../components/QuickActions";
@@ -19,6 +20,11 @@ const data = [
 export default function Dashboard() {
   return (
     <DashboardLayout>
+      <div className="back-home">
+        <Link to="/" className="back-btn">
+          ←Back to Home
+        </Link>
+      </div>
       <DashboardHero />
       <QuickActions />
       <LiveStatus />
