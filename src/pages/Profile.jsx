@@ -1,5 +1,5 @@
 import DashboardLayout from "../layouts/DashboardLayout";
-
+import "./Profile.css";
 export default function Profile() {
   return (
     <DashboardLayout>

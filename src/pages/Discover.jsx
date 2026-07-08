@@ -1,4 +1,5 @@
 import DashboardLayout from "../layouts/DashboardLayout";
+import "./Discover.css";
 
 const models = [
   {
@@ -7,7 +8,14 @@ const models = [
     country: "🇺🇸 USA",
     followers: "142k",
     rating: "9.8",
+    score: "99.2%",
+    speciality: "Men's Physique",
+    response: "2 hrs",
+    verified: "true",
+    online: "true",
     status: "Available",
+    avatar: "AC",
+    avatarColor: "#22c55e",
   },
   {
     id: 2,
@@ -15,7 +23,14 @@ const models = [
     country: "🇬🇧 UK",
     followers: "89k",
     rating: "9.6",
+    score: "84.7%",
+    speciality: "Men's Physique",
+    response: "2 hrs",
+    verified: "true",
+    online: "true",
     status: "Booked",
+    avatar: "DS",
+    avatarColor: "#8b5cf6",
   },
   {
     id: 3,
@@ -23,7 +38,14 @@ const models = [
     country: "🇨🇦 Canada",
     followers: "201k",
     rating: "9.9",
+    score: "97.8%",
+    speciality: "Men's Physique",
+    response: "2 hrs",
+    verified: "true",
+    online: "true",
     status: "Available",
+    avatar: "MJ",
+    avatarColor: "#3b82f6",
   },
   {
     id: 4,
@@ -31,7 +53,14 @@ const models = [
     country: "🇦🇺 Australia",
     followers: "116k",
     rating: "9.7",
+    score: "91.0%",
+    speciality: "Men's Physique",
+    response: "2 hrs",
+    verified: "true",
+    online: "true",
     status: "Available",
+    avatar: "DL",
+    avatarColor: "#f59e0b",
   },
   {
     id: 5,
@@ -39,7 +68,14 @@ const models = [
     country: "🇳🇬 Nigeria",
     followers: "74k",
     rating: "9.5",
-    status: "Booked",
+    score: "89.9%",
+    speciality: "Men's Physique",
+    response: "2 hrs",
+    verified: "true",
+    online: "true",
+    status: "Available",
+    avatar: "SG",
+    avatarColor: "#ef4444",
   },
   {
     id: 6,
@@ -47,7 +83,14 @@ const models = [
     country: "🇩🇪 Germany",
     followers: "154k",
     rating: "9.8",
+    score: "95.3%",
+    speciality: "Men's Physique",
+    response: "2 hrs",
+    verified: "true",
+    online: "true",
     status: "Available",
+    avatar: "CW",
+    avatarColor: "#06b6d4",
   },
 ];
 
@@ -55,12 +98,22 @@ export default function Discover() {
   return (
     <DashboardLayout>
       <div className="discover-header">
-        <div>
-          <h1>🌍 Discover Models</h1>
-          <p>Connect with elite athletes and fitness models worldwide.</p>
+        <div className="discover-title">
+          <span className="discover-badge">LIVE DISCOVERY</span>
+          <h1>
+            🌍Discover
+            <span>Elite Fitness Models</span>
+          </h1>
+          <p>
+            Explore verified athletes, creators and ambassadors from around the
+            world powered by FitModel AI.
+          </p>
         </div>
 
-        <button className="btn-primary">+ Become Featured</button>
+        <button className="discover-feature-btn">
+          Become Featured
+          <span>⇢</span>
+        </button>
       </div>
 
       <div className="discover-search">
@@ -84,13 +137,35 @@ export default function Discover() {
       <div className="discover-grid">
         {models.map((model) => (
           <div className="model-card" key={model.id}>
-            <div className="model-cover"></div>
+            <div className="model-cover">
+              <div className="verified-badge">✔ VERIFIED</div>
+              <div className="online-status">
+                <span></span>Online
+              </div>
+            </div>
+            <div className="profile-top">
+              <div
+                className="profile-avatar"
+                style={{
+                  background: `linear-gradient(135deg, ${model.avatarColor}, #ffffff20)`,
+                }}
+              >
+                {model.avatar}
+                {model.online && <span className="online-dot"></span>}
+              </div>
+              <div className="profile-info">
+                <h2>
+                  {model.name}
+                  {model.verified && <span className="verified-icon">✔</span>}
+                </h2>
+                <p>{model.country}</p>
+                <small>{model.speciality}</small>
+              </div>
+            </div>
 
-            <div className="model-avatar">{model.name.charAt(0)}</div>
-
-            <h2>{model.name}</h2>
-
-            <span>{model.country}</span>
+            <div className="portfolio-score">
+              Portfolio Score<strong>{model.score}</strong>
+            </div>
 
             <div className="model-stats">
               <div>
@@ -146,8 +221,14 @@ export default function Discover() {
             <p>Featured by Nike Campaign</p>
 
             <small>⭐ Portfolio Score 99%</small>
+            <div className="profile-footer">
+              <div className="ai-match">
+                <span>🤖 AI Match</span>
+                <strong>96%</strong>
+              </div>
+              {/* <div className="response-time">⚡ {model.response}</div> */}
+            </div>
           </div>
-
           <div className="trend-card">
             <span className="trend-rank">#3</span>
 

@@ -1,3 +1,5 @@
+import "./Notifications.css";
+
 export default function Notifications() {
   const notifications = [
     {

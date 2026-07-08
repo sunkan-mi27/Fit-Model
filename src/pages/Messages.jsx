@@ -1,4 +1,5 @@
 import DashboardLayout from "../layouts/DashboardLayout";
+import "./Messages.css";
 
 const chats = [
   {

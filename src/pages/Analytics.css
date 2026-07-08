@@ -1,0 +1,346 @@
+/*   ANALYTICS PAGE */
+.analytics-page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.dashboard-title {
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+}
+
+.analytics-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+  margin-bottom: 30px;
+}
+
+.analytics-card {
+  position: relative;
+  overflow: hidden;
+  padding: 28px;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #0f1117, #171b23);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: 0.35s;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+.analytics-card::before {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background: rgba(0, 229, 255, 0.08);
+  border-radius: 50%;
+  top: -80px;
+  right: -60px;
+  filter: blur(35px);
+}
+
+.analytics-card:hover {
+  transform: translateY(-8px);
+  border-color: #00e5ff;
+  box-shadow: 0 20px 40px rgba(0, 229, 255, 0.15);
+}
+
+.analytics-card small {
+  display: block;
+  color: #9ca3af;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.analytics-card h2 {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 25px;
+}
+
+/*  CHART CARDS */
+.chart-card {
+  position: relative;
+  overflow: hidden;
+  padding: 28px;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #11151d, #191f29);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+  transition: 0.35s ease;
+}
+
+.chart-card::before {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  background: rgba(34, 197, 94, 0.08);
+  border-radius: 50%;
+  top: -110px;
+  right: -80px;
+  filter: blur(45px);
+}
+
+.chart-card:hover {
+  transform: translateY(-8px);
+  border-color: #22c55e;
+  box-shadow: 0 25px 50px rgba(34, 197, 94, 0.18);
+}
+
+.chart-card h3 {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chart-card h3::after {
+  content: "LIVE";
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.12);
+  padding: 6px 12px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+}
+
+.recharts-wrapper {
+  margin-top: 10px;
+}
+
+.recharts-cartesian-grid line {
+  stroke: rgba(255, 255, 255, 0.05);
+}
+
+.recharts-tooltip-wrapper {
+  border-radius: 14px;
+}
+
+.recharts-default-tooltip {
+  background: #111 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 14px !important;
+  color: #fff !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.recharts-text {
+  fill: #b3b3b3;
+  font-size: 12px;
+}
+
+.recharts-curve {
+  filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.4));
+}
+
+/*  BOTTOM ANALYTICS SECTION */
+.analytics-bottom {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.analytics-card.large {
+  padding: 30px;
+  border-radius: 24px;
+}
+
+.analytics-card.large h3 {
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+/*   PERFORMANCE LIST */
+.performance-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.performance-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 18px;
+  background: #11161f;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  transition: 0.3s;
+}
+
+.performance-item:hover {
+  transform: translateX(8px);
+  border-color: #22c55e;
+  background: #151c26;
+}
+
+.performance-item span {
+  color: #bfc6d1;
+  font-size: 0.96rem;
+}
+
+.performance-item strong {
+  color: #22c55e;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/*   AI INSIGHTS  */
+.insight-item {
+  padding: 18px;
+  margin-bottom: 16px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #121821, #1a2230);
+  border-left: 4px solid #00e5ff;
+  color: #e8edf5;
+  line-height: 1.6;
+  transition: 0.3s;
+}
+
+.insight-item:hover {
+  transform: translateX(6px);
+  border-left-color: #22c55e;
+  box-shadow: 0 10px 25px rgba(0, 229, 255, 0.12);
+}
+
+.insight-item strong {
+  color: #22c55e;
+  font-weight: 700;
+}
+
+/*  GOALS PROGRESS */
+.analytics-goal {
+  margin-top: 30px;
+}
+
+.goal-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 70px;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 26px;
+}
+
+.goal-row span {
+  color: #d1d5db;
+  font-weight: 600;
+  font-size: 0.96rem;
+}
+
+.goal-row strong {
+  color: #22c55e;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 14px;
+  background: #121820;
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #22c55e, #00e5ff);
+  position: relative;
+  animation: progressLoad 2s ease;
+}
+
+.progress-fill::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 35px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.35);
+  filter: blur(8px);
+}
+
+@keyframes progressLoad {
+  from {
+    width: 0 !important;
+  }
+}
+
+/*   SCROLLBAR */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #22c55e;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00e5ff;
+}
+
+/*   RESPONSIVE */
+@media (max-width: 1024px) {
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+  .analytics-bottom {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .analytics-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .goal-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .goal-row strong {
+    text-align: left;
+  }
+  .chart-card,
+  .analytics-card {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 520px) {
+  .analytics-stats {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-title {
+    font-size: 2rem;
+  }
+  .chart-card h3,
+  .analytics-card.large h3 {
+    font-size: 1.1rem;
+  }
+}

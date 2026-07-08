@@ -9,6 +9,7 @@ import {
   XAxis,
   Tooltip,
 } from "recharts";
+import "./Analytics.css";
 
 const workoutData = [
   { day: "Mon", workout: 45, calories: 520 },
