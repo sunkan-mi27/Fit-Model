@@ -15,6 +15,7 @@ import Discover from "./pages/Discover";
 import Messages from "./pages/Messages";
 import Wallet from "./pages/Wallet";
 import Analytics from "./pages/Analytics";
+import NotFound from "./pages/NotFound";
 export default function App() {
   const [loading, setLoading] = useState(true);
 
@@ -44,6 +45,7 @@ export default function App() {
       <Route path="/messages" element={<Messages />} />
       <Route path="/wallet" element={<Wallet />} />
       <Route path="/analytics" element={<Analytics />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

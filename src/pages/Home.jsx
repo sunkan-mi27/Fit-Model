@@ -10,6 +10,7 @@ import BodyScanner from "../components/BodyScanner";
 import Testimonials from "../components/Testimonials";
 import Pricing from "../components/Pricing";
 import Footer from "../components/Footer.jsx";
+import "./Home.css";
 
 export default function Home() {
   useReveal();
@@ -19,115 +20,98 @@ export default function Home() {
       <MouseGlow />
       <Navbar />
       <section id="home" className="hero reveal">
-        <div className="hero-content">
+        <div className="hero-left">
           <span className="tag">Performance • Portfolio • Progress</span>
 
           <h1>
-            Build Your Body.
+            Build Your <span>Body.</span>
             <br />
-            Own Your Growth
+            Own Your <span>Growth</span>
           </h1>
 
           <p>
             Track your fitness journey, showcase your portfolio and manage your
-            growth from one powerful platform. <br />
-            Trusted by over 2,000 fitness professionals worldwide♻
+            growth from one powerful platform.
+            <br />
+            Trusted by over 2,000 fitness professionals worldwide.
           </p>
+
+          {/* Profile Card */}
+
+          <div className="profile-card">
+            <div className="profile-avatar">S</div>
+
+            <div className="profile-info">
+              <h2>SUNKANMI IBRAHIM</h2>
+
+              <p>Elite Fitness Model ✔</p>
+
+              <small>ID : FM-8891-ELITE</small>
+
+              <div className="profile-meta">
+                <span>🟢 Online</span>
+
+                <span>📅 Joined Jan 2024</span>
+              </div>
+            </div>
+          </div>
 
           <div className="hero-buttons">
             <button className="btn-primary">Get Started</button>
 
             <button className="btn-secondary">Live Demo</button>
           </div>
-
-          <div className="active-models">
-            👤 👤 👤 👤 <span>2K+ Active Models</span>
-          </div>
         </div>
 
-        <div className="hero-visual">
-          <div className="orb orb1"></div>
-          <div className="orb orb2"></div>
-          <div className="grid-lines"></div>
+        <div className="hero-right">
+          <div className="system-title">⚡ SYSTEM ONLINE</div>
 
-          <div className="hero-card">
-            <div className="hero-profile">
-              <div className="hero-avatar">
-                S<span className="online-dot"></span>
-              </div>
-
-              <div>
-                <h2>SUNKANMI IBRAHIM</h2>
-                <p>Elite Fitness Model ✔️</p>
-                <small>ID : FM-8891-ELITE</small>
-              </div>
+          <div className="hero-stats">
+            <div className="glass-stat">
+              <small>⚖ Weight</small>
+              <p className="positive">▲ +0.6kg</p>
+              <h2>78.4kg</h2>
             </div>
 
-            <div className="system-status">
-              <span className="pulse"></span>
-              SYSTEM ONLINE
+            <div className="glass-stat">
+              <small>🔥 Body Fat</small>
+              <p className="negative">▼ -0.3%</p>
+              <h2>12.6%</h2>
             </div>
 
-            <div className="hero-stats">
-              <div className="glass-stat">
-                <small>⚖️ Weight</small>
-                <p className="stat-change positive">▲ +0.6kg</p>
-                <h2>78.4kg</h2>
-              </div>
-
-              <div className="glass-stat">
-                <small>🔥 Body Fat</small>
-                <p className="stat-change negative">▼ -0.3%</p>
-                <h2>12.6%</h2>
-              </div>
-
-              <div className="glass-stat">
-                <small>💪 Muscle</small>
-                <p className="stat-change positive">▲ +1.2kg</p>
-                <h2>68.7kg</h2>
-              </div>
-
-              <div className="glass-stat">
-                <small>📈 Growth</small>
-                <p className="stat-change positive">▲ +2.4%</p>
-                <h2>+18.2%</h2>
-              </div>
+            <div className="glass-stat">
+              <small>💪 Muscle</small>
+              <p className="positive">▲ +1.2kg</p>
+              <h2>68.7kg</h2>
             </div>
 
-            <div className="goal-card">
-              <div className="goal-left">
-                <h4>Weekly Goal</h4>
-                <p>Performance Score</p>
-              </div>
+            <div className="glass-stat">
+              <small>📈 Growth</small>
+              <p className="positive">▲ +2.4%</p>
+              <h2>18.2%</h2>
+            </div>
+          </div>
 
-              <div className="progress-ring">
-                <svg width="90" height="90">
-                  <circle className="ring-bg" cx="45" cy="45" r="36" />
-                  <circle className="ring-progress" cx="45" cy="45" r="36" />
-                </svg>
-                <div className="ring-text">92%</div>
-              </div>
+          <div className="goal-card">
+            <div>
+              <h3>Weekly Goal</h3>
+
+              <p>Performance Score</p>
             </div>
 
-            <div className="coach-box">
-              <div className="coach-header">
-                <div className="ai-avatar">🤖</div>
-                <div>
-                  <h4>FITMODEL AI</h4>
+            <div className="progress-ring">
+              <svg width="90" height="90">
+                <circle className="ring-bg" cx="45" cy="45" r="36" />
 
-                  <small>
-                    <span className="ai-online"></span>ONLINE
-                  </small>
-                </div>
-              </div>
-              <div className="coach-message">
-                Excellent recovery detected. Protein absorption is optimal.
-                Tomorrow's recommended training intensity:<strong>HIGH</strong>
-              </div>
+                <circle className="ring-progress" cx="45" cy="45" r="36" />
+              </svg>
+
+              <div className="ring-text">92%</div>
             </div>
           </div>
         </div>
       </section>
+
       <div id="features">
         <Features />
       </div>

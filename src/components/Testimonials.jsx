@@ -1,3 +1,5 @@
+import "./Testimonials.css";
+
 const reviews = [
   {
     name: "Sarah Johnson",

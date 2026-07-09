@@ -1,0 +1,605 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+/* ===========================
+   RESET
+=========================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: #f8fbf8;
+}
+
+/* ===========================
+   PAGE
+=========================== */
+
+.notfound-page {
+  position: relative;
+
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  background: linear-gradient(180deg, #ffffff 0%, #f6fbf7 100%);
+}
+
+/* ===========================
+   GRID
+=========================== */
+
+.bg-grid {
+  position: absolute;
+
+  inset: 0;
+
+  background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+
+  background-size: 26px 26px;
+
+  opacity: 0.35;
+}
+
+/* ===========================
+   GLOW
+=========================== */
+
+.bg-glow {
+  position: absolute;
+
+  width: 380px;
+
+  height: 380px;
+
+  border-radius: 50%;
+
+  filter: blur(120px);
+
+  opacity: 0.45;
+}
+
+.glow-left {
+  top: 90px;
+
+  left: -120px;
+
+  background: #5dff97;
+}
+
+.glow-right {
+  bottom: 80px;
+
+  right: -150px;
+
+  background: #6fffaa;
+}
+
+/* ===========================
+   CONTENT
+=========================== */
+
+.notfound-content {
+  position: relative;
+
+  z-index: 5;
+
+  width: 100%;
+
+  max-width: 980px;
+
+  padding: 70px 25px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+}
+
+/* ===========================
+   HUGE 404
+=========================== */
+
+.bg-404 {
+  position: absolute;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  font-size: 15rem;
+
+  font-weight: 900;
+
+  color: rgba(34, 197, 94, 0.1);
+
+  letter-spacing: -12px;
+
+  user-select: none;
+
+  pointer-events: none;
+
+  line-height: 1;
+}
+
+.bg-404.top {
+  top: 20px;
+}
+
+.bg-404.bottom {
+  bottom: -120px;
+}
+
+/* ===========================
+   AI PANEL
+=========================== */
+
+.ai-panel {
+  width: 100%;
+
+  max-width: 640px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 22px 26px;
+
+  background: rgba(255, 255, 255, 0.78);
+
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255, 255, 255, 0.95);
+
+  border-radius: 24px;
+
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+
+  margin-bottom: 60px;
+
+  animation: floatCard 5s ease-in-out infinite;
+}
+
+/* ===========================
+   AVATAR
+=========================== */
+
+.ai-avatar {
+  width: 86px;
+
+  height: 86px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  font-size: 2rem;
+
+  font-weight: 800;
+
+  color: #fff;
+
+  background: linear-gradient(135deg, #57ef8c, #16a34a);
+
+  position: relative;
+
+  box-shadow: 0 0 35px rgba(34, 197, 94, 0.45);
+}
+
+.ai-avatar::before {
+  content: "";
+
+  position: absolute;
+
+  inset: -10px;
+
+  border-radius: 50%;
+
+  border: 2px solid rgba(34, 197, 94, 0.18);
+}
+
+.ai-avatar::after {
+  content: "";
+
+  position: absolute;
+
+  inset: -18px;
+
+  border-radius: 50%;
+
+  border: 2px dashed rgba(34, 197, 94, 0.12);
+
+  animation: spin 14s linear infinite;
+}
+
+/* ===========================
+   AI TEXT
+=========================== */
+
+.ai-center {
+  flex: 1;
+}
+
+.ai-tag {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 6px 14px;
+
+  border-radius: 30px;
+
+  background: #eaffef;
+
+  color: #16a34a;
+
+  font-size: 0.75rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+}
+
+.ai-center h3 {
+  margin-top: 12px;
+
+  color: #111827;
+
+  font-size: 2rem;
+
+  font-weight: 700;
+}
+
+.ai-center p {
+  margin-top: 10px;
+
+  color: #667085;
+
+  line-height: 1.8;
+
+  font-size: 0.97rem;
+}
+
+/* ===========================
+   MENU
+=========================== */
+
+.ai-menu {
+  align-self: flex-start;
+
+  color: #22c55e;
+
+  font-size: 1.8rem;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+/* ===========================
+   ANIMATION
+=========================== */
+
+@keyframes floatCard {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================
+   PAGE TAG
+========================================== */
+
+.page-tag {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 10px 22px;
+
+  border-radius: 40px;
+
+  background: #ebfff1;
+
+  color: #16a34a;
+
+  font-size: 0.8rem;
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  margin-bottom: 22px;
+}
+
+/* ==========================================
+   TITLE
+========================================== */
+
+.notfound-content h2 {
+  text-align: center;
+
+  font-size: 4rem;
+
+  line-height: 1.05;
+
+  letter-spacing: -2px;
+
+  color: #111827;
+
+  margin-bottom: 20px;
+}
+
+.notfound-content h2 span {
+  color: #22c55e;
+}
+
+/* ==========================================
+   DESCRIPTION
+========================================== */
+
+.description {
+  max-width: 620px;
+
+  text-align: center;
+
+  color: #667085;
+
+  line-height: 1.9;
+
+  font-size: 1rem;
+
+  margin-bottom: 55px;
+}
+
+/* ==========================================
+   STATUS GRID
+========================================== */
+
+.status-grid {
+  width: 100%;
+
+  max-width: 760px;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 22px;
+
+  margin-bottom: 55px;
+}
+
+/* ==========================================
+   STATUS CARD
+========================================== */
+
+.status-card {
+  background: rgba(255, 255, 255, 0.78);
+
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.95);
+
+  border-radius: 22px;
+
+  padding: 28px;
+
+  text-align: center;
+
+  transition: 0.35s;
+
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.06);
+}
+
+.status-card:hover {
+  transform: translateY(-8px);
+
+  box-shadow: 0 28px 60px rgba(34, 197, 94, 0.15);
+}
+
+.status-icon {
+  width: 58px;
+
+  height: 58px;
+
+  margin: auto;
+
+  margin-bottom: 18px;
+
+  border-radius: 18px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  background: #ecfff3;
+
+  font-size: 1.5rem;
+}
+
+.status-card h4 {
+  color: #111827;
+
+  margin-bottom: 8px;
+
+  font-size: 1.15rem;
+}
+
+.status-card small {
+  color: #16a34a;
+
+  font-weight: 600;
+}
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+.action-buttons {
+  display: flex;
+
+  gap: 18px;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+}
+
+.btn-dark,
+.btn-green {
+  width: 210px;
+
+  height: 60px;
+
+  border-radius: 18px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-decoration: none;
+
+  font-weight: 700;
+
+  transition: 0.35s;
+}
+
+.btn-dark {
+  background: #111827;
+
+  color: white;
+
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+}
+
+.btn-dark:hover {
+  transform: translateY(-5px);
+}
+
+.btn-green {
+  background: linear-gradient(135deg, #6cf49b, #22c55e);
+
+  color: white;
+
+  box-shadow: 0 18px 45px rgba(34, 197, 94, 0.3);
+}
+
+.btn-green:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 28px 65px rgba(34, 197, 94, 0.4);
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 900px) {
+  .bg-404 {
+    font-size: 11rem;
+  }
+
+  .ai-panel {
+    flex-direction: column;
+
+    text-align: center;
+
+    max-width: 520px;
+  }
+
+  .ai-center {
+    text-align: center;
+  }
+
+  .status-grid {
+    grid-template-columns: 1fr;
+
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 768px) {
+  .notfound-content {
+    padding: 55px 22px;
+  }
+
+  .notfound-content h2 {
+    font-size: 2.7rem;
+  }
+
+  .bg-404 {
+    font-size: 8rem;
+  }
+
+  .bg-404.bottom {
+    bottom: -60px;
+  }
+
+  .description {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ai-panel {
+    padding: 20px;
+  }
+
+  .ai-avatar {
+    width: 70px;
+
+    height: 70px;
+
+    font-size: 1.5rem;
+  }
+
+  .notfound-content h2 {
+    font-size: 2.2rem;
+  }
+
+  .btn-dark,
+  .btn-green {
+    width: 100%;
+  }
+}
