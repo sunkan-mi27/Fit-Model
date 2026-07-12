@@ -1,4 +1,5 @@
 import DashboardLayout from "../layouts/DashboardLayout";
+import "./Workout.css";
 
 export default function Workouts() {
   return (

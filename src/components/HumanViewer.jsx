@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./HumanViewer.css";
 export default function HumanViewer({
   heartRate = 72,
   scanProgress = 68,

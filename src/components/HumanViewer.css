@@ -1,0 +1,554 @@
+/* ==========================================
+   HUMAN VIEWER
+   PART 1
+========================================== */
+
+.bs-scan-stage {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  min-height: 720px;
+
+  margin: auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  border-radius: 32px;
+
+  background:
+    radial-gradient(circle at top, rgba(0, 229, 168, 0.12), transparent 60%),
+    linear-gradient(180deg, rgba(14, 20, 30, 0.95), rgba(7, 10, 18, 0.98));
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(25px);
+
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
+}
+
+/* ===================================== */
+
+.bs-floor {
+  position: absolute;
+
+  bottom: 40px;
+
+  width: 320px;
+
+  height: 38px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(circle, rgba(0, 229, 168, 0.45), transparent 70%);
+
+  filter: blur(10px);
+
+  animation: floorPulse 4s ease infinite;
+}
+
+/* ===================================== */
+
+.bs-orbit-wrap {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+.bs-orbit {
+  position: absolute;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(0, 229, 168, 0.15);
+}
+
+.orbit-1 {
+  width: 260px;
+  height: 260px;
+
+  animation: rotateOrbit 18s linear infinite;
+}
+
+.orbit-2 {
+  width: 340px;
+  height: 340px;
+
+  animation: rotateOrbitReverse 24s linear infinite;
+}
+
+.orbit-3 {
+  width: 430px;
+  height: 430px;
+
+  animation: rotateOrbit 30s linear infinite;
+}
+
+/* ===================================== */
+
+.bs-particles {
+  position: absolute;
+
+  inset: 0;
+
+  overflow: hidden;
+}
+
+.bs-particle {
+  position: absolute;
+
+  width: 4px;
+
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: #00e5a8;
+
+  opacity: 0.4;
+
+  animation: particleFloat 9s linear infinite;
+}
+
+/* Random positions */
+
+.bs-particle:nth-child(1) {
+  top: 10%;
+  left: 20%;
+}
+.bs-particle:nth-child(2) {
+  top: 18%;
+  left: 70%;
+}
+.bs-particle:nth-child(3) {
+  top: 28%;
+  left: 40%;
+}
+.bs-particle:nth-child(4) {
+  top: 36%;
+  left: 82%;
+}
+.bs-particle:nth-child(5) {
+  top: 48%;
+  left: 18%;
+}
+.bs-particle:nth-child(6) {
+  top: 55%;
+  left: 72%;
+}
+.bs-particle:nth-child(7) {
+  top: 64%;
+  left: 28%;
+}
+.bs-particle:nth-child(8) {
+  top: 74%;
+  left: 58%;
+}
+.bs-particle:nth-child(9) {
+  top: 84%;
+  left: 80%;
+}
+.bs-particle:nth-child(10) {
+  top: 22%;
+  left: 12%;
+}
+.bs-particle:nth-child(11) {
+  top: 12%;
+  left: 56%;
+}
+.bs-particle:nth-child(12) {
+  top: 42%;
+  left: 52%;
+}
+.bs-particle:nth-child(13) {
+  top: 62%;
+  left: 8%;
+}
+.bs-particle:nth-child(14) {
+  top: 70%;
+  left: 36%;
+}
+.bs-particle:nth-child(15) {
+  top: 90%;
+  left: 52%;
+}
+.bs-particle:nth-child(16) {
+  top: 82%;
+  left: 15%;
+}
+.bs-particle:nth-child(17) {
+  top: 50%;
+  left: 92%;
+}
+.bs-particle:nth-child(18) {
+  top: 8%;
+  left: 86%;
+}
+.bs-particle:nth-child(19) {
+  top: 30%;
+  left: 62%;
+}
+.bs-particle:nth-child(20) {
+  top: 58%;
+  left: 48%;
+}
+.bs-particle:nth-child(21) {
+  top: 76%;
+  left: 66%;
+}
+.bs-particle:nth-child(22) {
+  top: 14%;
+  left: 34%;
+}
+.bs-particle:nth-child(23) {
+  top: 44%;
+  left: 6%;
+}
+.bs-particle:nth-child(24) {
+  top: 92%;
+  left: 26%;
+}
+.bs-particle:nth-child(25) {
+  top: 66%;
+  left: 90%;
+}
+.bs-particle:nth-child(26) {
+  top: 24%;
+  left: 94%;
+}
+
+/* ===================================== */
+
+.bs-figure {
+  width: 250px;
+
+  max-width: 70vw;
+
+  color: #00e5a8;
+
+  z-index: 2;
+
+  filter: drop-shadow(0 0 20px rgba(0, 229, 168, 0.4))
+    drop-shadow(0 0 45px rgba(0, 229, 168, 0.2));
+}
+
+.bs-aura-pulse {
+  animation: auraPulse 4s ease infinite;
+}
+
+.bs-node-pulse circle {
+  animation: nodePulse 2s ease infinite;
+}
+
+/* ==========================================
+   HUD PANELS
+========================================== */
+
+.bs-hud {
+  position: absolute;
+  width: 230px;
+  padding: 20px;
+  border-radius: 22px;
+
+  background: rgba(15, 22, 35, 0.78);
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  color: #fff;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+.bs-hud-heart {
+  left: 40px;
+  top: 60px;
+}
+
+.bs-hud-status {
+  right: 40px;
+  top: 60px;
+}
+
+.bs-hud-label {
+  color: #7dd3fc;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.bs-hud-heart-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #00e5a8;
+}
+
+.bs-hud-big {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.bs-hud-sub {
+  margin-top: 8px;
+  color: #b6c2d3;
+  font-size: 0.9rem;
+}
+
+/* ==========================================
+   ECG
+========================================== */
+
+.bs-ecg {
+  width: 100%;
+  height: 40px;
+  margin-top: 16px;
+  color: #00e5a8;
+}
+
+.bs-ecg polyline {
+  animation: ecgMove 2s linear infinite;
+}
+
+/* ==========================================
+   PROGRESS BAR
+========================================== */
+
+.bs-progress-track {
+  width: 100%;
+  height: 10px;
+  background: #1d2638;
+  border-radius: 50px;
+  overflow: hidden;
+  margin-top: 18px;
+}
+
+.bs-progress-fill {
+  height: 100%;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #00d4ff, #00e5a8, #6eff8c);
+
+  transition: width 0.8s ease;
+}
+
+/* ==========================================
+   PROGRESS RING
+========================================== */
+
+.bs-progress-ring {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.bs-progress-ring svg {
+  transform: rotate(-90deg);
+}
+
+.bs-ring-bg {
+  fill: none;
+  stroke: #243146;
+  stroke-width: 6;
+}
+
+.bs-ring-fg {
+  fill: none;
+  stroke: #00e5a8;
+  stroke-width: 6;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s ease;
+}
+
+.bs-progress-text {
+  position: absolute;
+  text-align: center;
+}
+
+.bs-progress-text strong {
+  display: block;
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+.bs-progress-text small {
+  color: #94a3b8;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+}
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+
+@keyframes rotateOrbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateOrbitReverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes auraPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 0.9;
+  }
+}
+
+@keyframes nodePulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(0);
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-45px);
+    opacity: 0;
+  }
+}
+
+@keyframes floorPulse {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes ecgMove {
+  from {
+    stroke-dasharray: 140;
+    stroke-dashoffset: 140;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 992px) {
+  .bs-scan-stage {
+    min-height: 760px;
+  }
+
+  .bs-hud {
+    width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bs-scan-stage {
+    min-height: 980px;
+
+    padding: 30px 20px;
+  }
+
+  .bs-figure {
+    width: 180px;
+  }
+
+  .bs-hud {
+    position: relative;
+
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+
+    width: 100%;
+
+    max-width: 360px;
+
+    margin: 20px auto;
+  }
+
+  .bs-floor {
+    width: 220px;
+  }
+
+  .orbit-1 {
+    width: 180px;
+    height: 180px;
+  }
+
+  .orbit-2 {
+    width: 240px;
+    height: 240px;
+  }
+
+  .orbit-3 {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bs-scan-stage {
+    border-radius: 22px;
+    min-height: 900px;
+  }
+
+  .bs-hud {
+    padding: 16px;
+  }
+
+  .bs-progress-ring svg {
+    width: 80px;
+    height: 80px;
+  }
+
+  .bs-progress-text strong {
+    font-size: 1.1rem;
+  }
+}

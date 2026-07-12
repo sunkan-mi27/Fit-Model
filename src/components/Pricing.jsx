@@ -1,3 +1,5 @@
+import "./Pricing.css";
+
 const plans = [
   {
     title: "Starter",

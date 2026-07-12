@@ -1,5 +1,5 @@
 import TiltCard from "./TiltCard";
-
+import "./Features.css";
 export default function Features() {
   const features = [
     {
@@ -43,7 +43,7 @@ export default function Features() {
 
       <div className="feature-grid">
         {features.map((item, index) => (
-          <TiltCard className="feature-card" key={index}>
+          <TiltCard className="feature-card" key={item.title}>
             <div className="feature-icon">{item.icon}</div>
 
             <h3>{item.title}</h3>

@@ -1,0 +1,68 @@
+.mouse-glow {
+  position: fixed;
+
+  width: 260px;
+  height: 260px;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  left: 0;
+  top: 0;
+
+  transform: translate(-50%, -50%);
+
+  background: radial-gradient(
+    circle,
+    rgba(0, 229, 168, 0.22) 0%,
+    rgba(0, 229, 168, 0.12) 35%,
+    transparent 75%
+  );
+
+  filter: blur(45px);
+
+  z-index: 0;
+
+  transition:
+    left 0.08s linear,
+    top 0.08s linear;
+
+  opacity: 0.9;
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width: 992px) {
+  .mouse-glow {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 768px) {
+  .mouse-glow {
+    width: 160px;
+    height: 160px;
+
+    filter: blur(35px);
+
+    opacity: 0.45;
+  }
+}
+
+/* ==========================
+   SMALL PHONES
+========================== */
+
+@media (max-width: 480px) {
+  .mouse-glow {
+    display: none;
+  }
+}

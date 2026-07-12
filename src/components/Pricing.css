@@ -1,0 +1,149 @@
+/* ==========================
+   PRICING
+========================== */
+
+.pricing {
+  padding: 100px 20px;
+  position: relative;
+}
+
+.pricing h2 {
+  text-align: center;
+  margin-bottom: 18px;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.pricing-grid {
+  max-width: 1300px;
+  margin: 60px auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 35px;
+}
+
+.price-card {
+  position: relative;
+  background: rgba(18, 24, 34, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: 40px 32px;
+  backdrop-filter: blur(18px);
+  transition: 0.35s;
+  overflow: hidden;
+}
+
+.price-card:hover {
+  transform: translateY(-10px);
+  border-color: #00e5a8;
+  box-shadow: 0 25px 60px rgba(0, 229, 168, 0.25);
+}
+
+.featured {
+  border: 2px solid #00e5a8;
+  transform: scale(1.03);
+}
+
+.featured:hover {
+  transform: scale(1.03) translateY(-10px);
+}
+
+.price-badge {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background: #00e5a8;
+  color: #041312;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.price-card h3 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+}
+
+.price-card h1 {
+  font-size: clamp(3rem, 8vw, 5rem);
+  color: #00e5a8;
+  margin-bottom: 30px;
+}
+
+.price-card h1 span {
+  font-size: 1.2rem;
+  color: #9ca3af;
+}
+
+.price-card ul {
+  list-style: none;
+  display: grid;
+  gap: 18px;
+  margin-bottom: 35px;
+  padding: 0;
+}
+
+.price-card li {
+  color: #d1d5db;
+  font-size: 1rem;
+}
+
+.price-card .btn-primary {
+  width: 100%;
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width: 992px) {
+  .pricing {
+    padding: 80px 20px;
+  }
+
+  .pricing-grid {
+    gap: 25px;
+  }
+}
+
+/* ==========================
+   PHONE
+========================== */
+
+@media (max-width: 768px) {
+  .pricing {
+    padding: 70px 18px;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+
+  .price-card {
+    padding: 30px 24px;
+  }
+
+  .featured {
+    transform: none;
+  }
+
+  .featured:hover {
+    transform: translateY(-8px);
+  }
+}
+
+/* ==========================
+   SMALL PHONE
+========================== */
+
+@media (max-width: 480px) {
+  .price-card {
+    padding: 25px 20px;
+    border-radius: 22px;
+  }
+
+  .price-card h3 {
+    font-size: 1.7rem;
+  }
+}

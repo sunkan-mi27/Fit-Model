@@ -1,4 +1,5 @@
 import DashboardLayout from "../layouts/DashboardLayout";
+import "./AICoach.css";
 
 export default function AICoach() {
   return (

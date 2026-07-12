@@ -36,12 +36,9 @@
 .slide-track {
   display: flex;
   gap: 30px;
+  align-items: stretch;
   width: max-content;
   animation: scrollLeft 35s linear infinite;
-}
-
-.slider:hover .slide-track {
-  animation-play-state: paused;
 }
 
 @keyframes scrollLeft {
@@ -153,12 +150,12 @@
 
 .slider::before {
   left: 0;
-  background: linear-gradient(to right, #08111f, transparent);
+  background: linear-gradient(to right, #0d0d0d, transparent);
 }
 
 .slider::after {
   right: 0;
-  background: linear-gradient(to left, #08111f, transparent);
+  background: linear-gradient(to left, #0d0d0d, transparent);
 }
 
 /* ===========================
@@ -182,4 +179,10 @@
   .slide-track {
     gap: 20px;
   }
+}
+
+.slider {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }

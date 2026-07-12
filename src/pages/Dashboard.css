@@ -1,0 +1,737 @@
+.dashboard-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--text);
+  margin: 35px 0;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/*==================================================
+                GRID
+==================================================*/
+
+.dashboard-grid {
+  display: grid;
+
+  grid-template-columns: repeat(12, 1fr);
+
+  gap: 24px;
+
+  align-items: start;
+}
+
+/*==================================================
+                CARDS
+==================================================*/
+
+.dash-card {
+  grid-column: span 3;
+
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: 24px;
+
+  padding: 28px;
+
+  backdrop-filter: blur(18px);
+
+  transition: 0.4s ease;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+.dash-card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), transparent);
+
+  opacity: 0;
+
+  transition: 0.4s;
+}
+
+.dash-card:hover {
+  transform: translateY(-8px);
+
+  border-color: rgba(34, 197, 94, 0.35);
+
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.25),
+    0 0 25px rgba(34, 197, 94, 0.12);
+}
+
+.dash-card:hover::before {
+  opacity: 1;
+}
+
+.dash-card h3 {
+  color: var(--text);
+
+  margin-bottom: 20px;
+
+  font-size: 1.1rem;
+}
+
+.dash-card h1 {
+  color: #22c55e;
+
+  font-size: 2.5rem;
+
+  margin-bottom: 10px;
+}
+
+.dash-card p {
+  color: var(--text-secondary);
+
+  line-height: 1.7;
+}
+
+/*==================================================
+            WORKOUT PROGRESS
+==================================================*/
+
+.circle-progress {
+  width: 150px;
+
+  height: 150px;
+
+  margin: 25px auto;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  background: conic-gradient(
+    #22c55e 0% 92%,
+    rgba(255, 255, 255, 0.08) 92% 100%
+  );
+
+  position: relative;
+}
+
+.circle-progress::after {
+  content: "";
+
+  position: absolute;
+
+  width: 118px;
+
+  height: 118px;
+
+  border-radius: 50%;
+
+  background: var(--card);
+}
+
+.circle-value {
+  position: relative;
+
+  z-index: 2;
+
+  color: #22c55e;
+
+  font-size: 2rem;
+
+  font-weight: 700;
+}
+
+/*==================================================
+                WATER
+==================================================*/
+
+.water-bar {
+  width: 100%;
+
+  height: 12px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  overflow: hidden;
+
+  margin: 18px 0;
+}
+
+.water-fill {
+  width: 88%;
+
+  height: 100%;
+
+  border-radius: inherit;
+
+  background: linear-gradient(90deg, #06b6d4, #22c55e);
+
+  animation: waterFill 2s ease;
+}
+
+@keyframes waterFill {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 88%;
+  }
+}
+
+/*==================================================
+                SLEEP
+==================================================*/
+
+.sleep-bar {
+  width: 100%;
+
+  height: 12px;
+
+  border-radius: 999px;
+
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  margin: 18px 0;
+}
+
+.sleep-fill {
+  width: 96%;
+
+  height: 100%;
+
+  border-radius: inherit;
+
+  background: linear-gradient(90deg, #8b5cf6, #22c55e);
+
+  animation: sleepFill 2.2s ease;
+}
+
+@keyframes sleepFill {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 96%;
+  }
+}
+
+/*==================================================
+            CHART CARD
+==================================================*/
+
+.chart-card {
+  grid-column: span 8;
+
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: 24px;
+
+  padding: 28px;
+
+  backdrop-filter: blur(18px);
+
+  transition: 0.4s ease;
+
+  overflow: hidden;
+
+  position: relative;
+}
+
+.chart-card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), transparent);
+
+  opacity: 0;
+
+  transition: 0.4s;
+}
+
+.chart-card:hover {
+  transform: translateY(-8px);
+
+  border-color: rgba(34, 197, 94, 0.35);
+
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.25),
+    0 0 25px rgba(34, 197, 94, 0.12);
+}
+
+.chart-card:hover::before {
+  opacity: 1;
+}
+
+.chart-card h3 {
+  color: var(--text);
+
+  margin-bottom: 22px;
+
+  font-size: 1.25rem;
+}
+
+/*==================================================
+                AI COACH
+==================================================*/
+
+.ai-card {
+  grid-column: span 4;
+
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.15),
+    rgba(15, 23, 42, 0.96)
+  );
+
+  border: 1px solid rgba(34, 197, 94, 0.25);
+
+  border-radius: 24px;
+
+  padding: 30px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  transition: 0.4s ease;
+}
+
+.ai-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 260px;
+
+  height: 260px;
+
+  border-radius: 50%;
+
+  background: rgba(34, 197, 94, 0.08);
+
+  top: -120px;
+
+  right: -120px;
+}
+
+.ai-card:hover {
+  transform: translateY(-8px);
+
+  box-shadow: 0 20px 50px rgba(34, 197, 94, 0.18);
+}
+
+.ai-card h3 {
+  color: #22c55e;
+
+  font-size: 1.3rem;
+
+  margin-bottom: 18px;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+.ai-card p {
+  color: var(--text);
+
+  margin-bottom: 14px;
+
+  line-height: 1.8;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+.ai-card .btn-primary {
+  margin-top: 18px;
+
+  width: 100%;
+
+  padding: 15px;
+
+  border: none;
+
+  border-radius: 16px;
+
+  cursor: pointer;
+
+  font-weight: 700;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+/*==================================================
+        WORKOUT CALENDAR POSITION
+==================================================*/
+
+.calendar-card {
+  grid-column: span 4;
+
+  height: 100%;
+}
+
+/*==================================================
+            RECHARTS
+==================================================*/
+
+.recharts-wrapper {
+  margin-top: 15px;
+}
+
+.recharts-tooltip-wrapper {
+  border-radius: 14px;
+}
+
+.recharts-default-tooltip {
+  background: #111827 !important;
+
+  border: none !important;
+
+  border-radius: 14px !important;
+
+  padding: 10px 14px !important;
+}
+
+/*==================================================
+        PREMIUM ANIMATIONS
+==================================================*/
+
+.dashboard-title,
+.dash-card,
+.chart-card,
+.ai-card,
+.calendar-card {
+  animation: dashboardFade 0.7s ease both;
+}
+
+@keyframes dashboardFade {
+  from {
+    opacity: 0;
+
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/*==================================================
+            HOVER EFFECTS
+==================================================*/
+
+.dash-card,
+.chart-card,
+.ai-card,
+.calendar-card {
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    border-color 0.4s ease,
+    background 0.4s ease;
+}
+
+.dash-card:hover,
+.chart-card:hover,
+.calendar-card:hover {
+  border-color: rgba(34, 197, 94, 0.35);
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.25),
+    0 0 25px rgba(34, 197, 94, 0.12);
+}
+
+/*==================================================
+            BUTTON POLISH
+==================================================*/
+
+.btn-primary {
+  display: inline-flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 10px;
+
+  transition: 0.35s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+}
+
+/*==================================================
+            RESPONSIVE DESIGN
+==================================================*/
+
+/* Large Laptop */
+
+@media (max-width: 1400px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+
+  .dash-card {
+    grid-column: span 2;
+  }
+
+  .chart-card {
+    grid-column: span 5;
+  }
+
+  .ai-card,
+  .calendar-card {
+    grid-column: span 3;
+  }
+}
+
+/* Laptop & Tablet */
+
+@media (max-width: 992px) {
+  .dashboard-title {
+    text-align: center;
+
+    font-size: 2.4rem;
+
+    margin-bottom: 30px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+  }
+
+  .dash-card,
+  .chart-card,
+  .ai-card,
+  .calendar-card {
+    grid-column: span 1;
+  }
+
+  .chart-card {
+    min-height: 380px;
+  }
+
+  .circle-progress {
+    width: 130px;
+
+    height: 130px;
+  }
+
+  .circle-progress::after {
+    width: 102px;
+
+    height: 102px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .dashboard-title {
+    font-size: 2rem;
+
+    text-align: center;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .dash-card,
+  .chart-card,
+  .ai-card,
+  .calendar-card {
+    width: 100%;
+  }
+
+  .chart-card {
+    min-height: 340px;
+
+    padding: 22px;
+  }
+
+  .ai-card {
+    padding: 25px;
+  }
+
+  .calendar-card {
+    padding: 22px;
+  }
+
+  .circle-progress {
+    width: 120px;
+
+    height: 120px;
+  }
+
+  .circle-progress::after {
+    width: 94px;
+
+    height: 94px;
+  }
+
+  .circle-value {
+    font-size: 1.7rem;
+  }
+
+  .dash-card h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Small Phones */
+
+@media (max-width: 480px) {
+  .dashboard-title {
+    font-size: 1.7rem;
+
+    line-height: 1.4;
+  }
+
+  .dash-card,
+  .chart-card,
+  .ai-card,
+  .calendar-card {
+    padding: 18px;
+
+    border-radius: 18px;
+  }
+
+  .dash-card h3,
+  .chart-card h3,
+  .ai-card h3 {
+    font-size: 1rem;
+  }
+
+  .dash-card h1 {
+    font-size: 1.7rem;
+  }
+
+  .circle-progress {
+    width: 100px;
+
+    height: 100px;
+  }
+
+  .circle-progress::after {
+    width: 76px;
+
+    height: 76px;
+  }
+
+  .circle-value {
+    font-size: 1.35rem;
+  }
+
+  .water-bar,
+  .sleep-bar {
+    height: 10px;
+  }
+
+  .recharts-responsive-container {
+    min-height: 240px;
+  }
+}
+
+/* Ultra Small Phones */
+
+@media (max-width: 360px) {
+  .dashboard-title {
+    font-size: 1.5rem;
+  }
+
+  .dash-card,
+  .chart-card,
+  .ai-card,
+  .calendar-card {
+    padding: 15px;
+  }
+
+  .circle-progress {
+    width: 90px;
+
+    height: 90px;
+  }
+
+  .circle-progress::after {
+    width: 68px;
+
+    height: 68px;
+  }
+
+  .circle-value {
+    font-size: 1.2rem;
+  }
+
+  .dash-card h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/*==================================================
+        PREMIUM EFFECTS
+==================================================*/
+
+.dash-card,
+.chart-card,
+.ai-card,
+.calendar-card {
+  animation: dashboardFloat 0.7s ease both;
+}
+
+@keyframes dashboardFloat {
+  0% {
+    opacity: 0;
+
+    transform: translateY(25px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dash-card:hover,
+.chart-card:hover,
+.ai-card:hover,
+.ai-card:hover {
+  transform: translateY(-8px);
+}
+
+.dashboard-grid *,
+.dashboard-title {
+  transition:
+    background 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    transform 0.3s ease;
+}

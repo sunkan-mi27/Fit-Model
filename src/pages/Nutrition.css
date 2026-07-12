@@ -1,0 +1,716 @@
+/*==================================================
+            NUTRITION CENTER
+==================================================*/
+
+.dashboard-title {
+  font-size: 2.4rem;
+
+  font-weight: 800;
+
+  margin-bottom: 35px;
+
+  color: var(--text);
+}
+
+.dashboard-grid {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+  gap: 24px;
+
+  align-items: start;
+}
+
+/*==================================================
+            DASH CARDS
+==================================================*/
+
+.dash-card {
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: 24px;
+
+  padding: 28px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  transition: 0.35s ease;
+}
+
+.dash-card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), transparent);
+
+  opacity: 0;
+
+  transition: 0.35s;
+}
+
+.dash-card:hover {
+  transform: translateY(-8px);
+
+  border-color: rgba(34, 197, 94, 0.35);
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.22),
+    0 0 20px rgba(34, 197, 94, 0.12);
+}
+
+.dash-card:hover::before {
+  opacity: 1;
+}
+
+.dash-card > * {
+  position: relative;
+
+  z-index: 2;
+}
+
+.dash-card h3 {
+  font-size: 1rem;
+
+  margin-bottom: 16px;
+
+  color: var(--text-secondary);
+
+  font-weight: 600;
+}
+
+.dash-card h1 {
+  font-size: 2.5rem;
+
+  font-weight: 800;
+
+  margin-bottom: 12px;
+
+  color: #22c55e;
+}
+
+.dash-card p {
+  line-height: 1.8;
+
+  color: var(--text-secondary);
+}
+
+/*==================================================
+            WATER BAR
+==================================================*/
+
+.water-bar {
+  margin-top: 22px;
+
+  height: 12px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  border-radius: 999px;
+
+  overflow: hidden;
+}
+
+.water-fill {
+  height: 100%;
+
+  width: 88%;
+
+  border-radius: 999px;
+
+  background: linear-gradient(90deg, #22c55e, #00e5a8);
+
+  animation: waterLoad 2s ease;
+}
+
+@keyframes waterLoad {
+  from {
+    width: 0;
+  }
+}
+
+/*==================================================
+            CHART CARD
+==================================================*/
+
+.chart-card {
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: 24px;
+
+  padding: 30px;
+
+  transition: 0.35s ease;
+}
+
+.chart-card:hover {
+  transform: translateY(-8px);
+
+  border-color: rgba(34, 197, 94, 0.35);
+
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.22),
+    0 0 18px rgba(34, 197, 94, 0.12);
+}
+
+.chart-card h3 {
+  margin-bottom: 22px;
+
+  font-size: 1.25rem;
+
+  color: var(--text);
+}
+
+/*==================================================
+            CIRCLE SCORE
+==================================================*/
+
+.circle-progress {
+  width: 180px;
+
+  height: 180px;
+
+  margin: auto;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  background: conic-gradient(
+    #22c55e 0% 96%,
+
+    rgba(255, 255, 255, 0.08) 96% 100%
+  );
+
+  position: relative;
+}
+
+.circle-progress::before {
+  content: "";
+
+  position: absolute;
+
+  width: 135px;
+
+  height: 135px;
+
+  border-radius: 50%;
+
+  background: var(--card);
+}
+
+.circle-value {
+  position: relative;
+
+  z-index: 2;
+
+  font-size: 2.4rem;
+
+  font-weight: 800;
+
+  color: #22c55e;
+}
+
+/*==================================================
+            AI COACH
+==================================================*/
+
+.ai-card {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.15),
+    rgba(15, 23, 42, 0.96)
+  );
+
+  border: 1px solid rgba(34, 197, 94, 0.28);
+
+  border-radius: 24px;
+
+  padding: 30px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  gap: 18px;
+
+  transition: 0.35s ease;
+}
+
+.ai-card:hover {
+  transform: translateY(-8px);
+
+  box-shadow: 0 22px 50px rgba(34, 197, 94, 0.18);
+}
+
+.ai-card h3 {
+  font-size: 1.4rem;
+
+  color: #22c55e;
+}
+
+.ai-card p {
+  line-height: 1.8;
+
+  color: var(--text-secondary);
+}
+
+.ai-card .btn-primary {
+  width: fit-content;
+
+  margin-top: 10px;
+}
+
+/*==================================================
+            TODAY'S MEAL PLAN
+==================================================*/
+
+.meal-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+.meal-item {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 18px 20px;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  transition: 0.35s ease;
+
+  font-weight: 600;
+
+  color: var(--text);
+}
+
+.meal-item:hover {
+  transform: translateX(8px);
+
+  background: rgba(34, 197, 94, 0.08);
+
+  border-color: rgba(34, 197, 94, 0.25);
+}
+
+.meal-item span {
+  font-size: 0.92rem;
+
+  font-weight: 500;
+
+  color: var(--text-secondary);
+
+  text-align: right;
+}
+
+/*==================================================
+            AI MEAL PLANNER
+==================================================*/
+
+.meal-suggestions {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+  gap: 20px;
+
+  margin-bottom: 28px;
+}
+
+.meal-box {
+  padding: 22px;
+
+  border-radius: 22px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(34, 197, 94, 0.05)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  transition: 0.35s ease;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+.meal-box::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), transparent);
+
+  opacity: 0;
+
+  transition: 0.35s;
+}
+
+.meal-box:hover {
+  transform: translateY(-8px);
+
+  border-color: rgba(34, 197, 94, 0.35);
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.22),
+    0 0 18px rgba(34, 197, 94, 0.12);
+}
+
+.meal-box:hover::before {
+  opacity: 1;
+}
+
+.meal-box > * {
+  position: relative;
+
+  z-index: 2;
+}
+
+.meal-box h4 {
+  margin-bottom: 12px;
+
+  font-size: 1.15rem;
+
+  color: #22c55e;
+}
+
+.meal-box p {
+  margin-bottom: 12px;
+
+  line-height: 1.7;
+
+  color: var(--text);
+}
+
+.meal-box span {
+  font-size: 0.9rem;
+
+  font-weight: 600;
+
+  color: var(--text-secondary);
+
+  display: block;
+}
+
+/*==================================================
+            GENERATE BUTTON
+==================================================*/
+
+.chart-card > .btn-primary {
+  margin-top: 25px;
+
+  width: fit-content;
+}
+
+/*==================================================
+            NUTRITION INSIGHTS
+==================================================*/
+
+.nutrition-insights {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+  gap: 20px;
+}
+
+.insight-card {
+  padding: 28px 20px;
+
+  border-radius: 22px;
+
+  text-align: center;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(34, 197, 94, 0.05)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  transition: 0.35s ease;
+
+  position: relative;
+
+  overflow: hidden;
+
+  font-size: 2rem;
+}
+
+.insight-card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), transparent);
+
+  opacity: 0;
+
+  transition: 0.35s;
+}
+
+.insight-card:hover {
+  transform: translateY(-8px);
+
+  border-color: rgba(34, 197, 94, 0.35);
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.22),
+    0 0 18px rgba(34, 197, 94, 0.12);
+}
+
+.insight-card:hover::before {
+  opacity: 1;
+}
+
+.insight-card > * {
+  position: relative;
+
+  z-index: 2;
+}
+
+.insight-card h2 {
+  margin: 16px 0 10px;
+
+  font-size: 2rem;
+
+  font-weight: 800;
+
+  color: #22c55e;
+}
+
+.insight-card p {
+  font-size: 0.95rem;
+
+  line-height: 1.7;
+
+  color: var(--text-secondary);
+}
+
+/*==================================================
+            SUBTLE FLOAT ANIMATION
+==================================================*/
+
+.meal-box,
+.insight-card {
+  animation: cardFloat 5s ease-in-out infinite;
+}
+
+@keyframes cardFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* =========================================
+   SMART GROCERY LIST
+========================================= */
+
+.grocery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.grocery-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 18px;
+  padding: 18px;
+  transition: all 0.4s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.grocery-item:hover {
+  transform: translateY(-8px);
+  border-color: #22c55e;
+  box-shadow: 0 18px 40px rgba(34, 197, 94, 0.18);
+}
+
+.grocery-item span {
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.grocery-item small {
+  color: #22c55e;
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+
+/* =========================================
+   PANTRY MANAGER
+========================================= */
+
+.pantry-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  margin-top: 1.5rem;
+}
+
+.pantry-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.pantry-row span {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.stock-bar {
+  width: 100%;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.stock-bar div {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #16a34a, #22c55e, #6ee7b7);
+  position: relative;
+  animation: stockFill 1.5s ease;
+}
+
+.stock-bar div::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  animation: stockGlow 2.5s linear infinite;
+}
+
+/* =========================================
+   GROCERY CARD HOVER
+========================================= */
+
+.chart-card:hover .grocery-item {
+  border-color: rgba(34, 197, 94, 0.15);
+}
+
+.chart-card:hover .grocery-item:hover {
+  border-color: #22c55e;
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes stockFill {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes stockGlow {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(220%);
+  }
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 992px) {
+  .grocery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grocery-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .grocery-item {
+    padding: 16px;
+  }
+
+  .pantry-row span {
+    font-size: 0.9rem;
+  }
+
+  .stock-bar {
+    height: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grocery-item {
+    padding: 14px;
+  }
+
+  .grocery-item span {
+    font-size: 0.9rem;
+  }
+
+  .grocery-item small {
+    font-size: 0.78rem;
+  }
+
+  .stock-bar {
+    height: 8px;
+  }
+}

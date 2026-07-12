@@ -1,5 +1,6 @@
 import Calendar from "react-calendar";
 import { useState } from "react";
+import "./WorkoutCalender.css";
 
 export default function WorkoutCalendar() {
   const [date, setDate] = useState(new Date());
@@ -11,7 +12,7 @@ export default function WorkoutCalendar() {
       <Calendar onChange={setDate} value={date} />
 
       <p>
-        Next Workout:
+        <span>Next Workout:</span>
         <strong> {date.toDateString()}</strong>
       </p>
     </div>

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import { Link } from "react-router-dom";
+import "./Navbar.css";
 
 export default function Navbar() {
-  const [scroll, setScroll] = useState();
+  const [scroll, setScroll] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,41 +16,54 @@ export default function Navbar() {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   return (
     <nav className={scroll ? "navbar navbar-scroll" : "navbar"}>
       <div className="logo">
         FitModel<span>OS</span>
       </div>
 
-      <div className="nav-links">
+      <div className={menuOpen ? "nav-links active" : "nav-links"}>
         <ScrollLink
           className="nav-link"
           to="features"
-          smooth={true}
+          smooth
           duration={500}
+          onClick={() => setMenuOpen(false)}
         >
           Features
         </ScrollLink>
+
         <ScrollLink
           className="nav-link"
           to="models"
-          smooth={true}
+          smooth
           duration={500}
+          onClick={() => setMenuOpen(false)}
         >
           Models
         </ScrollLink>
+
         <ScrollLink
           className="nav-link"
           to="pricing"
-          smooth={true}
+          smooth
           duration={500}
+          onClick={() => setMenuOpen(false)}
         >
           Pricing
         </ScrollLink>
-        <Link to="/dashboard">Dashboard</Link>
+
+        <Link to="/dashboard" onClick={() => setMenuOpen(false)}>
+          Dashboard
+        </Link>
+
+        <button className="btn-primary">Get Started</button>
       </div>
 
-      <button className="btn-primary magnetic">Get Started</button>
+      <div className="menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
+        ☰
+      </div>
     </nav>
   );
 }

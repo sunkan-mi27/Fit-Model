@@ -1,0 +1,128 @@
+.calendar-card {
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+
+  padding: 28px;
+  border-radius: 22px;
+
+  background: rgba(17, 24, 39, 0.75);
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  transition: 0.35s ease;
+}
+
+.calendar-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 230, 118, 0.35);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+.calendar-card h3 {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.calendar-card p {
+  margin-top: 20px;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+.calendar-card strong {
+  color: #00e676;
+}
+
+/* React Calendar */
+
+.react-calendar {
+  width: 100%;
+  border: none;
+  border-radius: 18px;
+
+  padding: 18px;
+
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+}
+
+.react-calendar button {
+  color: #fff;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.react-calendar button:hover {
+  background: rgba(0, 230, 118, 0.15);
+}
+
+.react-calendar__tile--active {
+  background: #00e676 !important;
+  color: #081018 !important;
+}
+
+.react-calendar__navigation button {
+  color: #00e676;
+  font-weight: 600;
+}
+
+.react-calendar__month-view__weekdays {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.react-calendar__tile {
+  padding: 12px 8px;
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 768px) {
+  .calendar-card {
+    padding: 22px;
+  }
+
+  .calendar-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .react-calendar {
+    padding: 14px;
+  }
+}
+
+/* ---------- Phone ---------- */
+
+@media (max-width: 480px) {
+  .calendar-card {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .calendar-card h3 {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .calendar-card p {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .react-calendar {
+    font-size: 0.88rem;
+    padding: 10px;
+  }
+
+  .react-calendar__tile {
+    padding: 10px 4px;
+  }
+
+  .react-calendar__navigation button {
+    font-size: 0.9rem;
+  }
+}

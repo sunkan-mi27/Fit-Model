@@ -1,0 +1,163 @@
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1300px, 92%);
+  padding: 16px 30px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: rgba(12, 18, 28, 0.7);
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+
+  z-index: 1000;
+  transition: 0.35s;
+}
+
+.navbar-scroll {
+  background: rgba(8, 13, 20, 0.9);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+}
+
+.logo {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+}
+
+.logo span {
+  color: #00e5a8;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.nav-links a,
+.nav-link {
+  color: #dbe4ee;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+.nav-links a:hover,
+.nav-link:hover {
+  color: #00e5a8;
+}
+
+.btn-primary {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 12px;
+  background: #00e5a8;
+  color: #08131d;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.menu-btn {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 992px) {
+  .navbar {
+    padding: 15px 22px;
+  }
+
+  .nav-links {
+    gap: 22px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+
+    top: 85px;
+    left: 0;
+
+    width: 100%;
+
+    background: #0c1624;
+
+    border-radius: 18px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 25px;
+
+    gap: 20px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-15px);
+
+    transition: 0.35s;
+  }
+
+  .nav-links.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-links .btn-primary {
+    width: 100%;
+  }
+}
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width: 480px) {
+  .navbar {
+    width: 95%;
+    padding: 14px 16px;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+  }
+}

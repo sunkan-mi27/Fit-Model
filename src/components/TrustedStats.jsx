@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import "./TrustedStats.css";
 function Counter({ end, suffix = "" }) {
   const [count, setCount] = useState(0);
 
@@ -34,7 +34,7 @@ function Counter({ end, suffix = "" }) {
 
 export default function TrustedStats() {
   return (
-    <section className="trusted-stats">
+    <section className="trusted-stats" reveal>
       <div className="stat-item">
         <Counter end={15000} suffix="+" />
         <p>Active Models</p>

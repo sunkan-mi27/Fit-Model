@@ -1,0 +1,37 @@
+.tilt-card {
+  transform-style: preserve-3d;
+
+  will-change: transform;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.35s ease;
+
+  cursor: pointer;
+}
+
+.tilt-card:hover {
+  box-shadow: 0 20px 45px rgba(0, 229, 168, 0.18);
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width: 992px) {
+  .tilt-card {
+    transition: 0.3s;
+  }
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 768px) {
+  .tilt-card {
+    transform: none !important;
+
+    cursor: default;
+  }
+}

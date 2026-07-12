@@ -1,0 +1,87 @@
+.trusted-stats {
+  max-width: 1300px;
+  margin: auto;
+  padding: 100px 20px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.stat-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+
+  padding: 35px 25px;
+
+  text-align: center;
+
+  transition: 0.4s ease;
+
+  backdrop-filter: blur(15px);
+}
+
+.stat-item:hover {
+  transform: translateY(-8px);
+
+  border-color: var(--primary);
+
+  box-shadow: 0 20px 45px rgba(0, 229, 168, 0.18);
+}
+
+.stat-item h2 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+
+  color: var(--primary);
+
+  margin-bottom: 12px;
+
+  font-weight: 800;
+}
+
+.stat-item p {
+  color: var(--text-secondary);
+
+  font-size: 1rem;
+
+  line-height: 1.7;
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width: 992px) {
+  .trusted-stats {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+  }
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 768px) {
+  .trusted-stats {
+    grid-template-columns: 1fr;
+
+    padding: 80px 18px;
+  }
+
+  .stat-item {
+    padding: 30px 22px;
+  }
+}
+
+/* ==========================
+   SMALL PHONE
+========================== */
+
+@media (max-width: 480px) {
+  .stat-item h2 {
+    font-size: 2.4rem;
+  }
+}

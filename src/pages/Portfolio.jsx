@@ -1,4 +1,6 @@
 import DashboardLayout from "../layouts/DashboardLayout";
+import "./Portfolio.css";
+import Profile from "../assets/profile.jpg";
 
 export default function Portfolio() {
   return (
@@ -38,7 +40,7 @@ export default function Portfolio() {
 
         <div className="portfolio-right">
           <div className="profile-frame">
-            <img src="/profile.jpg" alt="Sunkanmi" />
+            <img src={Profile} alt="Sunkanmi" />
           </div>
         </div>
       </section>

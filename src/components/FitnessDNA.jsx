@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import "./FitnessDNA.css";
 const stats = [
   { name: "Power", value: 82 },
   { name: "Aesthetics", value: 91 },
@@ -39,7 +39,9 @@ export default function FitnessDNA() {
       <div className="dna-card">
         <h3>⚡ Alpha Builder</h3>
 
-        <p>High discipline. Excellent physique. Agency Ready.</p>
+        <p>
+          High discipline.<strong>Excellent physique</strong> Agency Ready.
+        </p>
       </div>
     </section>
   );

@@ -1,0 +1,89 @@
+.theme-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 12px 20px;
+
+  border: none;
+  outline: none;
+
+  border-radius: 14px;
+
+  background: linear-gradient(135deg, #00e5a8, #00c896);
+
+  color: #08131d;
+
+  font-size: 0.95rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.35s ease;
+
+  box-shadow: 0 8px 25px rgba(0, 229, 168, 0.25);
+}
+
+.theme-btn:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 15px 35px rgba(0, 229, 168, 0.35);
+}
+
+.theme-btn:active {
+  transform: scale(0.97);
+}
+
+/* ==========================================
+   LIGHT MODE
+========================================== */
+
+body.light-mode {
+  background: #f5f7fb;
+  color: #101828;
+}
+
+body.light-mode .theme-btn {
+  background: linear-gradient(135deg, #111827, #374151);
+
+  color: #fff;
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 992px) {
+  .theme-btn {
+    padding: 11px 18px;
+
+    font-size: 0.9rem;
+  }
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 768px) {
+  .theme-btn {
+    width: 100%;
+
+    padding: 14px;
+
+    font-size: 0.95rem;
+  }
+}
+
+/* ==========================================
+   SMALL PHONE
+========================================== */
+
+@media (max-width: 480px) {
+  .theme-btn {
+    font-size: 0.9rem;
+
+    padding: 12px;
+  }
+}

@@ -1,0 +1,181 @@
+.topbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 18px 28px;
+  margin-bottom: 30px;
+
+  background: rgba(18, 25, 40, 0.75);
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+}
+
+.topbar input {
+  flex: 1;
+  min-width: 180px;
+
+  padding: 14px 18px;
+
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+
+  color: #fff;
+  outline: none;
+
+  font-size: 0.95rem;
+
+  transition: 0.35s;
+}
+
+.topbar input::placeholder {
+  color: #9ca3af;
+}
+
+.topbar input:focus {
+  border-color: #00e676;
+  box-shadow: 0 0 18px rgba(0, 230, 118, 0.25);
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.topbar-right button {
+  width: 50px;
+  height: 50px;
+
+  border: none;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+
+  font-size: 1.1rem;
+
+  transition: 0.35s;
+}
+
+.topbar-right button:hover {
+  background: #00e676;
+  color: #081018;
+  transform: translateY(-3px);
+}
+
+.profile-chip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 10px 16px;
+
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.avatar-small {
+  width: 46px;
+  height: 46px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 700;
+
+  color: #fff;
+
+  background: linear-gradient(135deg, #00f5a0, #00c853);
+
+  box-shadow: 0 0 18px rgba(0, 230, 118, 0.35);
+}
+
+.profile-chip strong {
+  display: block;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.profile-chip p {
+  margin-top: 2px;
+  color: #94a3b8;
+  font-size: 0.8rem;
+}
+
+/* ---------- TABLET ---------- */
+
+@media (max-width: 992px) {
+  .topbar {
+    padding: 16px 20px;
+  }
+
+  .profile-chip {
+    padding: 8px 12px;
+  }
+}
+
+/* ---------- PHONE ---------- */
+
+@media (max-width: 768px) {
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .topbar input {
+    width: 100%;
+  }
+
+  .topbar-right {
+    justify-content: space-between;
+  }
+
+  .profile-chip {
+    flex: 1;
+  }
+}
+
+/* ---------- SMALL PHONE ---------- */
+
+@media (max-width: 480px) {
+  .topbar {
+    padding: 15px;
+  }
+
+  .profile-chip {
+    padding: 8px 10px;
+    gap: 10px;
+  }
+
+  .avatar-small {
+    width: 40px;
+    height: 40px;
+  }
+
+  .profile-chip strong {
+    font-size: 0.9rem;
+  }
+
+  .profile-chip p {
+    font-size: 0.75rem;
+  }
+
+  .topbar-right button {
+    width: 44px;
+    height: 44px;
+  }
+}

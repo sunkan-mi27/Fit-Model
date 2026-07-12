@@ -426,3 +426,10 @@
     font-size: 1.3rem;
   }
 }
+
+#dashboard,
+.hero,
+.testimonials,
+#pricing {
+  margin-bottom: 60px;
+}

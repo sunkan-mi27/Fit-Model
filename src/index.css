@@ -273,13 +273,6 @@ a {
   z-index: 2;
 }
 
-.section-tag {
-  color: #00e5a8;
-  margin-bottom: 15px;
-  letter-spacing: 3px;
-  font-size: 13px;
-}
-
 .features h2 {
   font-size: 3rem;
   margin: 20px 0;
@@ -978,7 +971,7 @@ html {
 }
 
 .loader-bar {
-  width: 350px;
+  width: min(350px, 90vw);
   height: 10px;
   background: #1a2238;
   border-radius: 50px;
@@ -4635,4 +4628,102 @@ html {
   background: #22c55e;
   transform: translateX(-6px);
   box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+}
+
+/*    RESPONSIVE DESIGN      */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  overflow-x: hidden;
+}
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.container {
+  width: min(1200px, 92%);
+  margin: auto;
+}
+/* Tablets */
+@media (max-width: 992px) {
+  section {
+    padding: 70px 25px;
+  }
+  h1 {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+  }
+  h2 {
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
+  }
+  .grid,
+  .cards,
+  .features-grid,
+  .pricing-grid,
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+/* Phones */
+@media (max-width: 768px) {
+  section {
+    padding: 60px 20px;
+  }
+  .hero {
+    text-align: center;
+    min-height: auto;
+  }
+  .hero-content {
+    width: 100%;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  .hero-buttons a,
+  .hero-buttons button {
+    width: 100%;
+  }
+  .grid,
+  .cards,
+  .features-grid,
+  .pricing-grid,
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  input,
+  textarea,
+  select,
+  button {
+    width: 100%;
+  }
+  .navbar {
+    width: 95%;
+    padding: 14px 20px;
+  }
+}
+/* Small Phones */
+@media (max-width: 480px) {
+  body {
+    font-size: 15px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  .card {
+    padding: 18px;
+  }
 }

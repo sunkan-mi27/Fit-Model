@@ -1,4 +1,5 @@
 import DashboardLayout from "../layouts/DashboardLayout";
+import "./Nutrition.css";
 
 export default function Nutrition() {
   return (
