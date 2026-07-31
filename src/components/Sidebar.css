@@ -144,3 +144,14 @@
     font-size: 0.92rem;
   }
 }
+
+.sidebar-logout {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  color: inherit;
+  padding: inherit;
+}

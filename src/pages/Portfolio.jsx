@@ -1,8 +1,109 @@
+import { useState, useEffect } from "react";
 import DashboardLayout from "../layouts/DashboardLayout";
 import "./Portfolio.css";
 import Profile from "../assets/profile.jpg";
+import {
+  createPortfolioItem,
+  fetchPortfolios,
+  deletePortfolioItem,
+} from "../utils/api";
 
 export default function Portfolio() {
+  const [portfolios, setPortfolios] = useState([]);
+  const [loadingPortfolios, setLoadingPortfolios] = useState(true);
+
+  const [form, setForm] = useState({
+    title: "",
+    description: "",
+    github: "",
+    liveDemo: "",
+    technologies: "",
+  });
+  const [file, setFile] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState("");
+
+  useEffect(() => {
+    loadPortfolios();
+  }, []);
+
+  const loadPortfolios = async () => {
+    try {
+      setLoadingPortfolios(true);
+      const items = await fetchPortfolios();
+      setPortfolios(items);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoadingPortfolios(false);
+    }
+  };
+
+  const handleFormChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleDelete = async (id) => {
+    const confirmed = window.confirm(
+      "Delete this project? This cannot be undone.",
+    );
+    if (!confirmed) return;
+
+    const token =
+      localStorage.getItem("token") || sessionStorage.getItem("token");
+    if (!token) return;
+
+    try {
+      await deletePortfolioItem(id, token);
+      setPortfolios((prev) => prev.filter((item) => item._id !== id));
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  const handleUpload = async (e) => {
+    e.preventDefault();
+    setUploadError("");
+
+    if (!form.title) {
+      setUploadError("Title is required");
+      return;
+    }
+
+    const token =
+      localStorage.getItem("token") || sessionStorage.getItem("token");
+    if (!token) {
+      setUploadError("You must be logged in to upload");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("title", form.title);
+    formData.append("description", form.description);
+    formData.append("github", form.github);
+    formData.append("liveDemo", form.liveDemo);
+    formData.append("technologies", form.technologies);
+    if (file) formData.append("file", file);
+
+    setUploading(true);
+    try {
+      await createPortfolioItem(formData, token);
+      setForm({
+        title: "",
+        description: "",
+        github: "",
+        liveDemo: "",
+        technologies: "",
+      });
+      setFile(null);
+      loadPortfolios(); // refresh the gallery with the new item
+    } catch (err) {
+      setUploadError(err.message);
+    } finally {
+      setUploading(false);
+    }
+  };
+
   return (
     <DashboardLayout>
       <section className="portfolio-hero">
@@ -288,81 +389,107 @@ export default function Portfolio() {
         <div className="gallery-header">
           <div>
             <small>♻PORTFOLIO</small>
-
-            <h2>Featured Campaigns</h2>
-
-            <p>
-              Professional shoots, commercial campaigns and elite physique
-              portfolio.
-            </p>
+            <h2>Your Projects</h2>
+            <p>Upload and showcase your real work here.</p>
           </div>
-
-          <button className="gallery-btn">View All</button>
         </div>
 
-        <div className="gallery-grid">
-          {[
-            {
-              title: "Summer Collection",
-              category: "Fitness Shoot",
-              views: "28.4K",
-              likes: "5.8K",
-            },
+        {/* Upload form */}
+        <form onSubmit={handleUpload} style={{ marginBottom: "24px" }}>
+          {uploadError && (
+            <div style={{ color: "#ff5c5c", marginBottom: "10px" }}>
+              {uploadError}
+            </div>
+          )}
 
-            {
-              title: "Commercial",
-              category: "Brand Campaign",
-              views: "64.9K",
-              likes: "12K",
-            },
+          <input
+            type="text"
+            name="title"
+            placeholder="Project title"
+            value={form.title}
+            onChange={handleFormChange}
+            style={{ display: "block", marginBottom: "8px", width: "100%" }}
+          />
+          <textarea
+            name="description"
+            placeholder="Description"
+            value={form.description}
+            onChange={handleFormChange}
+            style={{ display: "block", marginBottom: "8px", width: "100%" }}
+          />
+          <input
+            type="text"
+            name="liveDemo"
+            placeholder="Live demo link"
+            value={form.liveDemo}
+            onChange={handleFormChange}
+            style={{ display: "block", marginBottom: "8px", width: "100%" }}
+          />
+          <input
+            type="file"
+            accept="image/*,video/mp4,application/pdf"
+            onChange={(e) => setFile(e.target.files[0])}
+            style={{ display: "block", marginBottom: "8px" }}
+          />
 
-            {
-              title: "Gym Photoshoot",
-              category: "Portfolio",
-              views: "18K",
-              likes: "3.9K",
-            },
+          <button type="submit" className="btn-primary" disabled={uploading}>
+            {uploading ? "Uploading..." : "Add Project"}
+          </button>
+        </form>
 
-            {
-              title: "Luxury Editorial",
-              category: "Magazine",
-              views: "41K",
-              likes: "8.7K",
-            },
-
-            {
-              title: "Beach Collection",
-              category: "Lifestyle",
-              views: "56K",
-              likes: "11K",
-            },
-
-            {
-              title: "Fitness Expo",
-              category: "Event",
-              views: "34K",
-              likes: "6.4K",
-            },
-          ].map((item, index) => (
-            <div className="gallery-card" key={index}>
-              <div className="gallery-image">
-                <div className="image-overlay">
-                  <div>
-                    <h3>{item.title}</h3>
-
-                    <small>{item.category}</small>
-                  </div>
-
-                  <div className="gallery-stats">
-                    <span>👁️ {item.views}</span>
-
-                    <span>❤️ {item.likes}</span>
+        {/* Gallery */}
+        {loadingPortfolios ? (
+          <p>Loading projects...</p>
+        ) : portfolios.length === 0 ? (
+          <p>No projects yet — add your first one above.</p>
+        ) : (
+          <div className="gallery-grid">
+            {portfolios.map((item) => (
+              <div className="gallery-card" key={item._id}>
+                <div className="gallery-image">
+                  {item.image?.url && (
+                    <img
+                      src={item.image.url}
+                      alt={item.title}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  )}
+                  <div className="image-overlay">
+                    <div>
+                      <h3>{item.title}</h3>
+                      <small>{item.technologies.join(", ")}</small>
+                    </div>
+                    <div className="gallery-stats">
+                      <span>👁️ {item.views}</span>
+                      <span>❤️ {item.likes.length}</span>
+                    </div>
+                    <button
+                      onClick={() => handleDelete(item._id)}
+                      style={{
+                        position: "absolute",
+                        top: "8px",
+                        right: "8px",
+                        background: "rgba(220,38,38,0.85)",
+                        color: "#fff",
+                        border: "none",
+                        borderRadius: "6px",
+                        padding: "4px 8px",
+                        cursor: "pointer",
+                        fontSize: "12px",
+                      }}
+                    >
+                      🗑 Delete
+                    </button>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </section>
 
       <section className="elite-analytics">

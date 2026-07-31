@@ -1,7 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Sidebar.css";
 
 export default function Sidebar({ open, setOpen }) {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("user");
+    setOpen(false);
+    navigate("/login");
+  };
+
   return (
     <>
       <aside className={open ? "sidebar open" : "sidebar"}>
@@ -40,6 +51,9 @@ export default function Sidebar({ open, setOpen }) {
           <Link to="/analytics" onClick={() => setOpen(false)}>
             📊 Analytics
           </Link>
+          <button className="sidebar-logout" onClick={handleLogout}>
+            <strong>🚪 Logout</strong>
+          </button>
         </nav>
       </aside>
     </>

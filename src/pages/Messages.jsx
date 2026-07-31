@@ -1,249 +1,328 @@
+import { useState, useEffect, useRef } from "react";
+import { io } from "socket.io-client";
 import DashboardLayout from "../layouts/DashboardLayout";
 import "./Messages.css";
-
-const chats = [
-  {
-    id: 1,
-    name: "Nike Recruitment",
-    verified: true,
-    last: "We'd like to discuss a campaign...",
-    time: "2m",
-    unread: 3,
-  },
-  {
-    id: 2,
-    name: "Coach Daniel",
-    verified: false,
-    last: "Great workout today 💪",
-    time: "15m",
-    unread: 0,
-  },
-  {
-    id: 3,
-    name: "Gymshark",
-    verified: true,
-    last: "Contract has been sent.",
-    time: "1h",
-    unread: 1,
-  },
-  {
-    id: 4,
-    name: "John Photographer",
-    verified: false,
-    last: "Photos are ready.",
-    time: "3h",
-    unread: 0,
-  },
-];
-
-const messages = [
-  {
-    id: 1,
-    sender: "brand",
-    text: "Hi Sunkanmi! We've reviewed your profile and we're impressed.",
-    time: "09:40 AM",
-  },
-  {
-    id: 2,
-    sender: "brand",
-    text: "Would you be interested in representing our Summer Fitness Campaign?",
-    time: "09:41 AM",
-  },
-  {
-    id: 3,
-    sender: "me",
-    text: "Absolutely. I'd love to hear the campaign details.",
-    time: "09:43 AM",
-  },
-  {
-    id: 4,
-    sender: "brand",
-    text: "Great! We've attached an offer for your review below.",
-    time: "09:45 AM",
-  },
-];
+import {
+  SOCKET_URL,
+  fetchInbox,
+  fetchConversation,
+  sendMessageApi,
+  searchUsersApi,
+} from "../utils/api";
 
 export default function Messages() {
+  const token =
+    localStorage.getItem("token") || sessionStorage.getItem("token");
+  const storedUser =
+    localStorage.getItem("user") || sessionStorage.getItem("user");
+  const me = storedUser ? JSON.parse(storedUser) : null;
+
+  const [conversations, setConversations] = useState([]);
+  const [selectedPartner, setSelectedPartner] = useState(null);
+  const [messages, setMessages] = useState([]);
+  const [text, setText] = useState("");
+  const [file, setFile] = useState(null);
+  const [onlineUsers, setOnlineUsers] = useState(new Set());
+  const [typingFrom, setTypingFrom] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  const socketRef = useRef(null);
+  const chatBodyRef = useRef(null);
+  const typingTimeoutRef = useRef(null);
+
+  // Connect socket once on mount
+  useEffect(() => {
+    if (!me) return;
+
+    const socket = io(SOCKET_URL);
+    socketRef.current = socket;
+
+    socket.emit("join", me.id);
+
+    socket.on("userOnline", (userId) => {
+      setOnlineUsers((prev) => new Set(prev).add(userId));
+    });
+
+    socket.on("userOffline", (userId) => {
+      setOnlineUsers((prev) => {
+        const next = new Set(prev);
+        next.delete(userId);
+        return next;
+      });
+    });
+
+    socket.on("newMessage", (msg) => {
+      // Only append if it belongs to the conversation currently open
+      setMessages((prev) => {
+        const isRelevant =
+          selectedPartner &&
+          (msg.sender._id === selectedPartner._id ||
+            msg.receiver === selectedPartner._id);
+        return isRelevant ? [...prev, msg] : prev;
+      });
+      loadInbox(); // refresh sidebar previews/unseen counts
+    });
+
+    socket.on("typing", ({ senderId }) => {
+      setTypingFrom(senderId);
+    });
+
+    socket.on("stopTyping", () => {
+      setTypingFrom(null);
+    });
+
+    return () => socket.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    loadInbox();
+  }, []);
+
+  useEffect(() => {
+    if (chatBodyRef.current) {
+      chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
+    }
+  }, [messages]);
+
+  const loadInbox = async () => {
+    try {
+      const data = await fetchInbox(token);
+      setConversations(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const openConversation = async (partner) => {
+    setSelectedPartner(partner);
+    try {
+      const data = await fetchConversation(partner._id, token);
+      setMessages(data);
+      loadInbox(); // unseen count for this conversation just cleared server-side
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleSearch = async (q) => {
+    setSearchQuery(q);
+    if (!q) {
+      setSearchResults([]);
+      return;
+    }
+    try {
+      const users = await searchUsersApi(q, token);
+      setSearchResults(users);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleTyping = (value) => {
+    setText(value);
+    if (!selectedPartner || !socketRef.current) return;
+
+    socketRef.current.emit("typing", {
+      senderId: me.id,
+      receiverId: selectedPartner._id,
+    });
+
+    clearTimeout(typingTimeoutRef.current);
+    typingTimeoutRef.current = setTimeout(() => {
+      socketRef.current.emit("stopTyping", {
+        senderId: me.id,
+        receiverId: selectedPartner._id,
+      });
+    }, 1500);
+  };
+
+  const handleSend = async () => {
+    if (!selectedPartner || (!text.trim() && !file)) return;
+
+    const formData = new FormData();
+    formData.append("receiver", selectedPartner._id);
+    formData.append("message", text.trim());
+    if (file) formData.append("image", file);
+
+    try {
+      const sent = await sendMessageApi(formData, token);
+      setMessages((prev) => [...prev, sent]);
+      setText("");
+      setFile(null);
+      loadInbox();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <DashboardLayout>
       <div className="messages-page">
         <div className="chat-sidebar">
           <div className="chat-search">
-            <input placeholder="🔍 Search conversations..." />
+            <input
+              placeholder="🔍 Search people..."
+              value={searchQuery}
+              onChange={(e) => handleSearch(e.target.value)}
+            />
           </div>
 
-          {chats.map((chat) => (
-            <div className="chat-item" key={chat.id}>
+          {searchQuery && searchResults.length > 0 && (
+            <div>
+              {searchResults.map((user) => (
+                <div
+                  className="chat-item"
+                  key={user._id}
+                  onClick={() => {
+                    setSearchQuery("");
+                    setSearchResults([]);
+                    openConversation(user);
+                  }}
+                >
+                  <div className="chat-avatar">{user.name.charAt(0)}</div>
+                  <div className="chat-info">
+                    <h4>{user.name}</h4>
+                    <p>@{user.username}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {conversations.map(({ partner, lastMessage, unseenCount }) => (
+            <div
+              className="chat-item"
+              key={partner._id}
+              onClick={() => openConversation(partner)}
+              style={{
+                background:
+                  selectedPartner?._id === partner._id
+                    ? "rgba(255,255,255,0.08)"
+                    : "transparent",
+              }}
+            >
               <div className="chat-avatar">
-                {chat.name.charAt(0)}
-                <span className="online-dot"></span>
+                {partner.name.charAt(0)}
+                {onlineUsers.has(partner._id) && (
+                  <span className="online-dot"></span>
+                )}
               </div>
 
               <div className="chat-info">
-                <h4>
-                  {chat.name}
-                  {chat.verified && " ✅"}
-                </h4>
-
-                <p>{chat.last}</p>
+                <h4>{partner.name}</h4>
+                <p>{lastMessage.message || "📷 Image"}</p>
               </div>
 
               <div className="chat-meta">
-                <small>{chat.time}</small>
-
-                {chat.unread > 0 && <span>{chat.unread}</span>}
+                <small>
+                  {new Date(lastMessage.createdAt).toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </small>
+                {unseenCount > 0 && <span>{unseenCount}</span>}
               </div>
             </div>
           ))}
         </div>
 
         <div className="chat-window">
-          <div className="chat-header">
-            <div>
-              <h2>Nike Recruitment ✅</h2>
-              <small>🟢 Online ◾ Last active just now</small>
+          {!selectedPartner ? (
+            <div style={{ padding: "24px" }}>
+              Select a conversation to start chatting.
             </div>
-
-            <div className="chat-actions">
-              <button>📞</button>
-              <button>🎥</button>
-              <button>📅</button>
-              <button>⭐</button>
-              <button>⋮</button>
-            </div>
-          </div>
-
-          <div className="chat-body">
-            <div className="message received">
-              Hello Sunkanmi,
-              <br />
-              We've reviewed your portfolio.
-              <span className="message-time">9:21 AM</span>
-            </div>
-
-            <div className="message sent">
-              Thank you. I'd love to hear more about the campaign.
-              <span className="message-time">9:23 AM</span>
-            </div>
-
-            <div className="message received">
-              Great. Our team will send the agreement today.
-              <span className="message-time">9:24 AM</span>
-            </div>
-          </div>
-
-          <div className="offer-card">
-            <div className="offer-top">
-              <div>
-                <small>ACTIVE OFFER</small>
-
-                <h2>Summer Fitness Campaign</h2>
-
-                <p>Nike Recruitment Team</p>
+          ) : (
+            <>
+              <div className="chat-header">
+                <div>
+                  <h2>{selectedPartner.name}</h2>
+                  <small>
+                    {onlineUsers.has(selectedPartner._id)
+                      ? "🟢 Online"
+                      : "⚪ Offline"}
+                  </small>
+                </div>
               </div>
 
-              <div className="offer-price">$8,500</div>
-            </div>
-
-            <div className="offer-details">
-              <div>
-                <span>Duration</span>
-                <strong>30 Days</strong>
+              <div className="chat-body" ref={chatBodyRef}>
+                {messages.map((msg) => (
+                  <div
+                    className={
+                      msg.sender._id === me.id
+                        ? "message sent"
+                        : "message received"
+                    }
+                    key={msg._id}
+                  >
+                    {msg.image?.url && (
+                      <img
+                        src={msg.image.url}
+                        alt=""
+                        style={{
+                          maxWidth: "200px",
+                          borderRadius: "8px",
+                          display: "block",
+                          marginBottom: "4px",
+                        }}
+                      />
+                    )}
+                    {msg.message}
+                    <span className="message-time">
+                      {new Date(msg.createdAt).toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
+                    </span>
+                  </div>
+                ))}
               </div>
 
-              <div>
-                <span>Posts Required</span>
-                <strong>8</strong>
+              {typingFrom === selectedPartner._id && (
+                <div className="typing-indicator">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <small>{selectedPartner.name} is typing...</small>
+                </div>
+              )}
+
+              <div className="chat-input">
+                <label className="input-icon" style={{ cursor: "pointer" }}>
+                  📎
+                  <input
+                    type="file"
+                    accept="image/*"
+                    style={{ display: "none" }}
+                    onChange={(e) => setFile(e.target.files[0])}
+                  />
+                </label>
+                {file && (
+                  <small style={{ marginRight: "8px" }}>{file.name}</small>
+                )}
+                <input
+                  type="text"
+                  placeholder="Type a message..."
+                  value={text}
+                  onChange={(e) => handleTyping(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleSend()}
+                />
+                <button className="send-btn" onClick={handleSend}>
+                  ↪
+                </button>
               </div>
-
-              <div>
-                <span>Deadline</span>
-                <strong>July 28</strong>
-              </div>
-
-              <div>
-                <span>Status</span>
-                <strong className="pending">Pending</strong>
-              </div>
-            </div>
-
-            <div className="offer-actions">
-              <button className="btn-primary">✅ Accept</button>
-
-              <button className="btn-secondary">✏️ Counter Offer</button>
-
-              <button className="btn-secondary">❌ Decline</button>
-            </div>
-          </div>
-
-          <div className="typing-indicator">
-            <span></span>
-            <span></span>
-            <span></span>
-
-            <small>Nike Recruitment is typing...</small>
-          </div>
-
-          <div className="chat-input">
-            <button className="input-icon">😊</button>
-            <button className="input-icon">📎</button>
-            <input type="text" placeholder="Type a message..." />
-
-            <button className="input-icon">🎤</button>
-            <button className="send-btn">↪</button>
-          </div>
+            </>
+          )}
         </div>
-
-        {/* ================= RIGHT PANEL ================= */}
 
         <div className="chat-details">
           <div className="detail-card">
-            <div className="detail-avatar">N</div>
-
-            <h2>Nike Recruitment</h2>
-
-            <p>Verified Brand Partner ✅</p>
-
-            <button className="btn-primary">View Brand Profile</button>
-          </div>
-
-          <div className="detail-card">
-            <h3>📋 Collaboration</h3>
-
-            <div className="detail-row">
-              <span>Campaign</span>
-              <strong>Summer Fitness 2026</strong>
-            </div>
-
-            <div className="detail-row">
-              <span>Budget</span>
-              <strong>$8,500</strong>
-            </div>
-
-            <div className="detail-row">
-              <span>Status</span>
-              <strong className="active-status">Negotiating</strong>
-            </div>
-          </div>
-
-          <div className="detail-card">
-            <h3>📎 Shared Files</h3>
-
-            <div className="shared-file">📄 Contract.pdf</div>
-
-            <div className="shared-file">🖼️ CampaignMoodboard.png</div>
-
-            <div className="shared-file">📑 Requirements.docx</div>
-          </div>
-
-          <div className="detail-card">
-            <h3>⚡ Quick Actions</h3>
-
-            <button className="btn-primary">Accept Offer</button>
-
-            <button className="btn-secondary">Schedule Meeting</button>
-
-            <button className="btn-secondary">Archive Chat</button>
+            <h3>ℹ️ Note</h3>
+            <p>
+              This panel and the offer/brand-deal section are placeholder UI for
+              a future feature.
+            </p>
           </div>
         </div>
       </div>

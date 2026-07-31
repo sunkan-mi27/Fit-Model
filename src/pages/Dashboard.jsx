@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DashboardLayout from "../layouts/DashboardLayout";
 import DashboardHero from "../components/DashboardHero";
 import QuickActions from "../components/QuickActions";
@@ -18,13 +18,39 @@ const data = [
 ];
 
 export default function Dashboard() {
+  const navigate = useNavigate();
+
+  // Login stores in localStorage or sessionStorage depending on "Remember me"
+  const storedUser =
+    localStorage.getItem("user") || sessionStorage.getItem("user");
+  const user = storedUser ? JSON.parse(storedUser) : null;
+
+  // Show just the first name, fall back gracefully if somehow not logged in
+  const firstName = user?.name ? user.name.split(" ")[0] : "there";
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("user");
+    navigate("/login");
+  };
+
   return (
     <DashboardLayout>
       <DashboardHero />
       <QuickActions />
       <LiveStatus />
       <>
-        <h1 className="dashboard-title">Welcome Back, Sunkanmi 👋</h1>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <h1 className="dashboard-title">Welcome Back, {firstName} 👋</h1>
+        </div>
 
         <div className="dashboard-grid">
           <div className="dash-card">
